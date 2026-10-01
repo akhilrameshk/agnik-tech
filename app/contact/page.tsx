@@ -24,8 +24,8 @@ import RocketLaunchOutlinedIcon from '@mui/icons-material/RocketLaunchOutlined';
 
 // TODO: replace with your real contact details (keep in sync with the footer)
 const CONTACT = {
-  email: 'info@yourdomain.com',
-  phone: '+91 00000 00000',
+  email: 'info@agniktech.com',
+  phone: '+91 9633134324',
   // WhatsApp number in international format: country code + number, digits only (no +, spaces or dashes)
   whatsapp: '910000000000',
 };

@@ -8,8 +8,8 @@ import Image from 'next/image';
 
 // TODO: replace these with your real contact details
 const CONTACT = {
-  email: 'info@yourdomain.com',
-  phone: '+91 00000 00000',
+  email: 'info@agniktech.com',
+  phone: '+91 9633134324',
 };
 
 const companyLinks = [

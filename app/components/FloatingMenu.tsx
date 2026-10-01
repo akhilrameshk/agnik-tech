@@ -1,10 +1,8 @@
 'use client';
 import { useCallback, useEffect, useState } from 'react';
-import { Box, Fab, Tooltip, Zoom, CircularProgress, ClickAwayListener } from '@mui/material';
+import { Box, Fab, Tooltip, Zoom, CircularProgress } from '@mui/material';
 import { useColorScheme } from '@mui/material/styles';
 import Link from 'next/link';
-import AppsIcon from '@mui/icons-material/Apps';
-import CloseIcon from '@mui/icons-material/Close';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
@@ -18,7 +16,6 @@ const WHATSAPP_URL = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponen
 )}`;
 
 export default function FloatingMenu() {
-  const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [progress, setProgress] = useState(0); // 0 to 1: how far down the page we are
   const { mode, systemMode, setMode } = useColorScheme();
@@ -40,14 +37,6 @@ export default function FloatingMenu() {
     };
   }, []);
 
-  // Close with the Escape key
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [open]);
-
   const resolved = mode === 'system' ? systemMode : mode;
   const isDark = resolved === 'dark';
   const atTop = progress < 0.02;
@@ -61,7 +50,7 @@ export default function FloatingMenu() {
 
   const percent = Math.round(progress * 100);
 
-  // Items are listed from the top of the stack down to the main button
+  // Items are listed from top to bottom
   const items = [
     {
       key: 'up',
@@ -84,7 +73,6 @@ export default function FloatingMenu() {
       label: 'Contact us',
       icon: <SupportAgentOutlinedIcon />,
       href: '/contact',
-      onClick: () => setOpen(false),
       sx: { bgcolor: 'secondary.main', color: 'primary.main', '&:hover': { bgcolor: 'secondary.light' } },
     },
     {
@@ -92,7 +80,6 @@ export default function FloatingMenu() {
       label: 'Chat on WhatsApp',
       icon: <WhatsAppIcon />,
       externalHref: WHATSAPP_URL,
-      onClick: () => setOpen(false),
       sx: { bgcolor: '#25D366', color: 'white', '&:hover': { bgcolor: '#1EBE5A' } },
     },
     {
@@ -105,117 +92,112 @@ export default function FloatingMenu() {
   ];
 
   return (
-    <ClickAwayListener onClickAway={() => open && setOpen(false)}>
-      <Box
-        sx={{
-          position: 'fixed',
-          right: { xs: 16, md: 28 },
-          bottom: { xs: 'calc(16px + env(safe-area-inset-bottom, 0px))', md: 28 },
-          zIndex: 1050,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: 1.5,
-        }}
-      >
-        {items.map((item, i) => {
-          const delay = open ? `${(items.length - i) * 35}ms` : '0ms';
-          const common = {
-            size: 'small' as const,
-            'aria-label': item.label,
-            disabled: item.disabled,
-            sx: {
-              width: 44,
-              height: 44,
-              boxShadow: '0 8px 20px rgba(10, 25, 47, 0.28)',
-              '&.Mui-disabled': { opacity: 0.45, bgcolor: 'background.paper', color: 'text.secondary' },
-              ...item.sx,
-            },
-          };
+    <Box
+      sx={{
+        position: 'fixed',
+        right: { xs: 16, md: 28 },
+        bottom: { xs: 'calc(16px + env(safe-area-inset-bottom, 0px))', md: 28 },
+        zIndex: 1050,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 1.5,
+      }}
+    >
+      {items.map((item) => {
+        const common = {
+          size: 'small' as const,
+          'aria-label': item.label,
+          disabled: item.disabled,
+          sx: {
+            width: 44,
+            height: 44,
+            boxShadow: '0 8px 20px rgba(10, 25, 47, 0.28)',
+            '&.Mui-disabled': { opacity: 0.45, bgcolor: 'background.paper', color: 'text.secondary' },
+            ...item.sx,
+          },
+        };
 
-          let button;
-          if (item.href) {
-            button = (
-              <Fab {...common} component={Link} href={item.href} onClick={item.onClick}>
-                {item.icon}
-              </Fab>
-            );
-          } else if (item.externalHref) {
-            button = (
-              <Fab
-                {...common}
-                component="a"
-                href={item.externalHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={item.onClick}
-              >
-                {item.icon}
-              </Fab>
-            );
-          } else {
-            button = (
-              <Fab {...common} onClick={item.onClick}>
-                {item.icon}
-              </Fab>
-            );
-          }
-
-          return (
-            <Zoom key={item.key} in={open} style={{ transitionDelay: delay }}>
-              <Box>
-                <Tooltip title={item.label} placement="left" arrow>
-                  {/* span lets the tooltip work even when the button is disabled */}
-                  <span>{button}</span>
-                </Tooltip>
-              </Box>
-            </Zoom>
+        let button;
+        if (item.href) {
+          button = (
+            <Fab {...common} component={Link} href={item.href} onClick={item.onClick}>
+              {item.icon}
+            </Fab>
           );
-        })}
+        } else if (item.externalHref) {
+          button = (
+            <Fab
+              {...common}
+              component="a"
+              href={item.externalHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={item.onClick}
+            >
+              {item.icon}
+            </Fab>
+          );
+        } else {
+          button = (
+            <Fab {...common} onClick={item.onClick}>
+              {item.icon}
+            </Fab>
+          );
+        }
 
-        {/* Main toggle button with a ring that shows scroll position */}
-        <Box sx={{ position: 'relative', width: 64, height: 64 }}>
-          <CircularProgress
-            variant="determinate"
-            value={100}
-            size={64}
-            thickness={2.5}
-            sx={{ position: 'absolute', inset: 0, color: 'divider' }}
-          />
-          <CircularProgress
-            variant="determinate"
-            value={percent}
-            size={64}
-            thickness={2.5}
+        return (
+          <Zoom key={item.key} in={true}>
+            <Box>
+              <Tooltip title={item.label} placement="left" arrow>
+                <span>{button}</span>
+              </Tooltip>
+            </Box>
+          </Zoom>
+        );
+      })}
+
+      {/* Bottom scroll-progress indicator badge */}
+      <Box sx={{ position: 'relative', width: 52, height: 52, mt: 0.5 }}>
+        <CircularProgress
+          variant="determinate"
+          value={100}
+          size={52}
+          thickness={3}
+          sx={{ position: 'absolute', inset: 0, color: 'divider' }}
+        />
+        <CircularProgress
+          variant="determinate"
+          value={percent}
+          size={52}
+          thickness={3}
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            color: 'warning.main',
+            '& .MuiCircularProgress-circle': { strokeLinecap: 'round' },
+          }}
+        />
+        <Tooltip title={`Scroll progress: ${percent}%`} placement="left" arrow>
+          <Box
             sx={{
               position: 'absolute',
-              inset: 0,
-              color: 'warning.main',
-              '& .MuiCircularProgress-circle': { strokeLinecap: 'round' },
+              inset: 4,
+              borderRadius: '50%',
+              bgcolor: 'background.paper',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+              fontSize: '0.7rem',
+              fontWeight: 700,
+              color: 'text.primary',
             }}
-          />
-          <Tooltip title={open ? 'Close menu' : `Quick menu (${percent}% scrolled)`} placement="left" arrow>
-            <Fab
-              aria-label={open ? 'Close quick menu' : 'Open quick menu'}
-              aria-expanded={open}
-              onClick={() => setOpen((v) => !v)}
-              sx={{
-                position: 'absolute',
-                top: 6,
-                left: 6,
-                width: 52,
-                height: 52,
-                bgcolor: 'secondary.main',
-                color: 'primary.main',
-                boxShadow: '0 10px 26px rgba(0, 180, 216, 0.45)',
-                '&:hover': { bgcolor: 'secondary.light' },
-              }}
-            >
-              {open ? <CloseIcon /> : <AppsIcon />}
-            </Fab>
-          </Tooltip>
-        </Box>
+          >
+            {percent}%
+          </Box>
+        </Tooltip>
       </Box>
-    </ClickAwayListener>
+    </Box>
   );
 }
