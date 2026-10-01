@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from 'next';
+import { CONTACT, COMPANY } from './siteConfig';
 
 /* ------------------------------------------------------------------
    Central SEO settings. Edit the values here and every page updates.
    ------------------------------------------------------------------ */
 
-// TODO: set your real domain. Best practice: put it in .env.local as
-// NEXT_PUBLIC_SITE_URL=https://www.yourdomain.com
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yourdomain.com').replace(/\/$/, '');
+// Your live address. It can be overridden with NEXT_PUBLIC_SITE_URL in .env.local
+// (see COMPANY.website in siteConfig.ts)
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || `https://${COMPANY.website}`).replace(/\/$/, '');
 export const SITE_NAME = 'Agnik Tech Solutions';
 export const TAGLINE = 'Innovate. Create. Secure.';
 
@@ -127,10 +128,10 @@ export const organizationJsonLd = {
       logo: `${SITE_URL}/icon.png`,
       slogan: TAGLINE,
       description: DEFAULT_DESCRIPTION,
-      // TODO: add your real email and social profiles
+      // TODO: add your social profiles below (email comes from siteConfig.ts)
       contactPoint: {
         '@type': 'ContactPoint',
-        email: 'info@yourdomain.com',
+        email: CONTACT.email,
         contactType: 'customer support',
       },
       // sameAs: ['https://www.linkedin.com/company/your-company', 'https://github.com/your-org'],

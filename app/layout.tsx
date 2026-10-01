@@ -2,10 +2,12 @@ import type { ReactNode } from 'react';
 import { Poppins } from 'next/font/google';
 import { Box, CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
+import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
 
 import theme from './theme';
-import Header from './components/Header'; // adjust the path if your Header lives elsewhere
-import Footer from './components/Footer'; // adjust the path if your Footer lives elsewhere
+import Header from './components/Header';
+import Footer from './components/Footer';
+import FloatingMenu from './components/FloatingMenu';
 import { rootMetadata, rootViewport, organizationJsonLd } from './seo';
 
 /* SEO: title, description, share previews, robots, canonical (see app/seo.ts) */
@@ -21,15 +23,19 @@ const poppins = Poppins({
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={poppins.variable}>
+    // suppressHydrationWarning is needed because the theme script sets the light/dark class before React loads
+    <html lang="en" className={poppins.variable} suppressHydrationWarning>
       <body>
+        {/* Applies the saved light/dark choice before first paint (no flash) */}
+        <InitColorSchemeScript attribute="class" defaultMode="light" />
+
         {/* Structured data so Google understands the business */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
 
-          <ThemeProvider theme={theme}>
+           <ThemeProvider theme={theme} defaultMode="light">
             <CssBaseline />
             <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
               <Header />
@@ -38,8 +44,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </Box>
               <Footer />
             </Box>
+
+            {/* Floating menu: theme toggle, WhatsApp, contact, scroll up/down */}
+            <FloatingMenu />
           </ThemeProvider>
-       </body>
+      </body>
     </html>
   );
 }

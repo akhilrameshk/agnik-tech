@@ -130,7 +130,7 @@ function SectionHeading({
         sx={{
           fontWeight: 800,
           letterSpacing: '-0.02em',
-          color: light ? 'white' : 'primary.main',
+          color: light ? 'white' : 'text.primary',
           fontSize: { xs: '1.9rem', md: '2.6rem' },
         }}
       >
@@ -439,7 +439,7 @@ export default function Home() {
                 >
                   {p.icon}
                 </Box>
-                <Typography variant="h5" sx={{ fontWeight: 800, color: 'primary.main', mb: 1 }}>
+                <Typography variant="h5" sx={{ fontWeight: 800, color: 'text.primary', mb: 1 }}>
                   {p.title}
                 </Typography>
                 <Typography sx={{ color: 'text.secondary', lineHeight: 1.7 }}>{p.desc}</Typography>
@@ -511,7 +511,7 @@ export default function Home() {
                 >
                   {s.icon}
                 </Box>
-                <Typography variant="h6" sx={{ fontWeight: 700, color: 'primary.main', mb: 1 }}>
+                <Typography variant="h6" sx={{ fontWeight: 700, color: 'text.primary', mb: 1 }}>
                   {s.title}
                 </Typography>
                 <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
@@ -527,7 +527,7 @@ export default function Home() {
             component={Link}
             href="/services"
             endIcon={<ArrowForwardIcon />}
-            sx={{ fontWeight: 700, textTransform: 'none', fontSize: '1rem', color: 'primary.main' }}
+            sx={{ fontWeight: 700, textTransform: 'none', fontSize: '1rem', color: 'text.primary' }}
           >
             Explore all services
           </Button>
@@ -611,7 +611,7 @@ export default function Home() {
             <Typography
               variant="h3"
               component="h2"
-              sx={{ fontWeight: 800, color: 'primary.main', letterSpacing: '-0.02em', mb: 3, fontSize: { xs: '1.9rem', md: '2.5rem' } }}
+              sx={{ fontWeight: 800, color: 'text.primary', letterSpacing: '-0.02em', mb: 3, fontSize: { xs: '1.9rem', md: '2.5rem' } }}
             >
               Engineering You Can Trust
             </Typography>
@@ -636,7 +636,7 @@ export default function Home() {
                 boxShadow: '0 24px 60px rgba(10, 25, 47, 0.1)',
               }}
             >
-              <Typography variant="h6" sx={{ fontWeight: 800, color: 'primary.main', mb: 0.5 }}>
+              <Typography variant="h6" sx={{ fontWeight: 800, color: 'text.primary', mb: 0.5 }}>
                 Our Technology Stack
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary', mb: 3 }}>
@@ -649,7 +649,7 @@ export default function Home() {
                     label={t}
                     sx={{
                       fontWeight: 600,
-                      color: 'primary.main',
+                      color: 'text.primary',
                       bgcolor: 'rgba(0, 180, 216, 0.1)',
                       border: '1px solid rgba(0, 180, 216, 0.25)',
                       transition: 'all 0.25s ease',
