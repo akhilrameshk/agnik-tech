@@ -27,7 +27,7 @@ const CONTACT = {
   email: 'info@agniktech.com',
   phone: '+91 9633134324',
   // WhatsApp number in international format: country code + number, digits only (no +, spaces or dashes)
-  whatsapp: '910000000000',
+  whatsapp: '+919633134324',
 };
 
 const fadeUp = keyframes`
