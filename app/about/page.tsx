@@ -395,6 +395,8 @@ export default function AboutPage() {
                     '&:hover': { bgcolor: 'rgba(255,255,255,0.08)', borderColor: item.accent, transform: 'translateY(-6px)' },
                   }}
                 >
+                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                                 
                   <Box
                     sx={{
                       width: 64,
@@ -414,6 +416,7 @@ export default function AboutPage() {
                   <Typography variant="h5" sx={{ fontWeight: 800, mb: 1.5 }}>
                     {item.title}
                   </Typography>
+                  </Box>
                   <Typography sx={{ color: 'grey.300', lineHeight: 1.8, fontSize: '1.05rem' }}>{item.desc}</Typography>
                 </Box>
               </Grid>
@@ -447,6 +450,8 @@ export default function AboutPage() {
                   '&:hover': { transform: 'translateY(-8px)', borderColor: v.color },
                 }}
               >
+                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+               
                 <Box
                   sx={{
                     width: 58,
@@ -466,6 +471,7 @@ export default function AboutPage() {
                 <Typography variant="h6" sx={{ fontWeight: 800, color: 'primary.main', mb: 1 }}>
                   {v.title}
                 </Typography>
+                </Box>
                 <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.75 }}>
                   {v.desc}
                 </Typography>
@@ -498,6 +504,8 @@ export default function AboutPage() {
                   boxShadow: '0 20px 50px rgba(10, 25, 47, 0.08)',
                 }}
               >
+                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+               
                 <Box
                   sx={{
                     width: 58,
@@ -517,6 +525,7 @@ export default function AboutPage() {
                 <Typography variant="h5" sx={{ fontWeight: 800, color: 'primary.main', mb: 1 }}>
                   Technologies We Use
                 </Typography>
+                </Box>
                 <Typography sx={{ color: 'text.secondary', lineHeight: 1.75, mb: 3 }}>
                   A modern, battle-tested stack for web applications, back-end systems and cloud deployment.
                 </Typography>
@@ -564,6 +573,8 @@ export default function AboutPage() {
                   }}
                 />
                 <Box sx={{ position: 'relative' }}>
+                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+               
                   <Box
                     sx={{
                       width: 58,
@@ -583,6 +594,7 @@ export default function AboutPage() {
                   <Typography variant="h5" sx={{ fontWeight: 800, mb: 1 }}>
                     Industries We Serve
                   </Typography>
+                  </Box>
                   <Typography sx={{ color: 'grey.300', lineHeight: 1.75, mb: 3 }}>
                     Domain knowledge that helps us understand your users from day one.
                   </Typography>

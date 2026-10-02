@@ -494,10 +494,13 @@ export default function ServicesPage() {
                     '&:hover': { bgcolor: 'rgba(255,255,255,0.08)', borderColor: 'rgba(247,127,0,0.6)', transform: 'translateY(-6px)' },
                   }}
                 >
+                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                                 
                   <Box sx={{ color: 'warning.main', mb: 2, '& svg': { fontSize: 40 } }}>{item.icon}</Box>
                   <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
                     {item.title}
                   </Typography>
+                  </Box>
                   <Typography variant="body2" sx={{ color: 'grey.400', lineHeight: 1.7 }}>
                     {item.desc}
                   </Typography>

@@ -327,6 +327,8 @@ export default function SolutionsPage() {
                   '&:hover .sol-icon': { bgcolor: 'primary.main', color: 'secondary.main' },
                 }}
               >
+                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+               
                 <Box
                   className="sol-icon"
                   sx={{
@@ -348,6 +350,7 @@ export default function SolutionsPage() {
                 <Typography variant="h6" sx={{ fontWeight: 700, color: 'primary.main', mb: 1 }}>
                   {s.title}
                 </Typography>
+                </Box>
                 <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7, mb: 2.5 }}>
                   {s.desc}
                 </Typography>
@@ -413,10 +416,13 @@ export default function SolutionsPage() {
                     '&:hover': { bgcolor: 'rgba(255,255,255,0.08)', borderColor: 'rgba(247,127,0,0.6)', transform: 'translateY(-6px)' },
                   }}
                 >
+                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+               
                   <Box sx={{ color: 'warning.main', mb: 2, '& svg': { fontSize: 40 } }}>{i.icon}</Box>
                   <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
                     {i.title}
                   </Typography>
+                  </Box>
                   <Typography variant="body2" sx={{ color: 'grey.400', lineHeight: 1.7 }}>
                     {i.desc}
                   </Typography>
@@ -452,6 +458,8 @@ export default function SolutionsPage() {
                   '&:hover': { transform: 'translateY(-8px)', borderColor: 'warning.main' },
                 }}
               >
+                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+               
                 <Box
                   sx={{
                     width: 58,
@@ -471,6 +479,7 @@ export default function SolutionsPage() {
                 <Typography variant="h6" sx={{ fontWeight: 800, color: 'primary.main', mb: 1 }}>
                   {m.title}
                 </Typography>
+                </Box>
                 <Typography sx={{ color: 'text.secondary', lineHeight: 1.7, mb: 2 }}>{m.desc}</Typography>
                 <Chip
                   label={m.best}

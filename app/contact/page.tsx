@@ -465,10 +465,13 @@ export default function ContactPage() {
                   }}
                 />
                 <Box sx={{ position: 'relative' }}>
+                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                                 
                   <WhatshotIcon sx={{ color: 'warning.main', fontSize: 40, mb: 1.5 }} />
                   <Typography variant="h6" sx={{ fontWeight: 800, mb: 1 }}>
                     Innovate. Create. Secure.
                   </Typography>
+                  </Box>
                   <Typography sx={{ color: 'grey.300', lineHeight: 1.75 }}>
                     Every message is read by our team. Tell us as much as you can about your idea and we will help
                     you find the best way to bring it to life.
