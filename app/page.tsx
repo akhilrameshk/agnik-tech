@@ -2,6 +2,7 @@
 import { Box, Container, Typography, Button, Grid, Card, Chip, Stack } from '@mui/material';
 import { keyframes } from '@mui/material/styles';
 import Link from 'next/link';
+import HeroShowcase from './components/HeroShowcase';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
@@ -14,13 +15,8 @@ import InsightsOutlinedIcon from '@mui/icons-material/InsightsOutlined';
 import CloudQueueIcon from '@mui/icons-material/CloudQueue';
 import SpeedIcon from '@mui/icons-material/Speed';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import RocketLaunchOutlinedIcon from '@mui/icons-material/RocketLaunchOutlined';
 
 /* ---------- animations ---------- */
-const floatY = keyframes`
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-`;
 const pulseGlow = keyframes`
   0%, 100% { opacity: 0.55; transform: scale(1); }
   50% { opacity: 0.9; transform: scale(1.08); }
@@ -201,204 +197,141 @@ export default function Home() {
         />
 
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
-          <Grid container spacing={{ xs: 6, md: 4 }} sx={{alignItems:"center"}}>
+          <Grid container spacing={{ xs: 6, md: 4 }} sx={{ alignItems: "center" }}>
             {/* Left: copy */}
             <Grid size={{ xs: 12, md: 7 }}>
-              <Box sx={{ animation: `${fadeUp} 0.8s ease both`, textAlign: { xs: 'center', md: 'left' } }}>
-                <Box
-                  sx={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 1,
-                    px: 2,
-                    py: 0.75,
-                    mb: 3,
-                    borderRadius: '50px',
-                    bgcolor: 'rgba(0, 180, 216, 0.1)',
-                    border: '1px solid rgba(0, 180, 216, 0.35)',
-                    color: 'secondary.main',
-                    fontSize: '0.875rem',
-                    fontWeight: 600,
-                    backdropFilter: 'blur(6px)',
-                  }}
-                >
-                  <WhatshotIcon fontSize="small" sx={{ color: 'warning.main' }} />
-                  Innovate. Create. Secure.
-                </Box>
-
-                <Typography
-                  component="h1"
-                  sx={{
-                    fontWeight: 800,
-                    letterSpacing: '-0.03em',
-                    lineHeight: 1.1,
-                    mb: 2.5,
-                    fontSize: { xs: '2.5rem', sm: '3.2rem', md: '3.8rem' },
-                  }}
-                >
-                  Software That{' '}
-                  <Box
-                    component="span"
-                    sx={{
-                      background: 'linear-gradient(90deg, #00B4D8 0%, #48CAE4 45%, #F77F00 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                    }}
-                  >
-                    Ignites Your Growth
-                  </Box>
-                </Typography>
-
-                <Typography
-                  sx={{
-                    color: 'warning.main',
-                    fontWeight: 600,
-                    mb: 2.5,
-                    letterSpacing: '0.12em',
-                    textTransform: 'uppercase',
-                    fontSize: { xs: '0.85rem', md: '1rem' },
-                  }}
-                >
-                  Next-Gen Software & Web Engineering
-                </Typography>
-
-                <Typography
-                  sx={{
-                    mb: 5,
-                    color: 'grey.300',
-                    maxWidth: 560,
-                    mx: { xs: 'auto', md: 0 },
-                    fontSize: { xs: '1.05rem', md: '1.15rem' },
-                    lineHeight: 1.75,
-                  }}
-                >
-                  Agnik Tech Solutions designs and builds high-performance web applications and scalable full-stack
-                  platforms, secure by design and ready for real-world scale.
-                </Typography>
-
-                <Stack
-                  direction={{ xs: 'column', sm: 'row' }}
-                  spacing={2}
-                  sx={{ justifyContent: { xs: 'center', md: 'flex-start' } }}
-                >
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    size="large"
-                    component={Link}
-                    href="/contact"
-                    endIcon={<ArrowForwardIcon />}
-                    sx={{
-                      px: 4,
-                      py: 1.6,
-                      fontWeight: 700,
-                      fontSize: '1rem',
-                      borderRadius: '999px',
-                      textTransform: 'none',
-                      color: 'primary.main',
-                      boxShadow: '0 10px 30px rgba(0, 180, 216, 0.35)',
-                      transition: 'all 0.3s ease',
-                      '&:hover': { transform: 'translateY(-3px)', boxShadow: '0 14px 36px rgba(0, 180, 216, 0.5)' },
-                    }}
-                  >
-                    Start Your Project
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    size="large"
-                    component={Link}
-                    href="/portfolio"
-                    sx={{
-                      px: 4,
-                      py: 1.6,
-                      fontWeight: 600,
-                      fontSize: '1rem',
-                      borderRadius: '999px',
-                      textTransform: 'none',
-                      color: 'white',
-                      borderColor: 'rgba(255,255,255,0.35)',
-                      transition: 'all 0.3s ease',
-                      '&:hover': { borderColor: 'warning.main', bgcolor: 'rgba(247,127,0,0.08)' },
-                    }}
-                  >
-                    View Our Work
-                  </Button>
-                </Stack>
-              </Box>
+             <Box sx={{ animation: `${fadeUp} 0.8s ease both`, textAlign: { xs: 'center', md: 'left' } }}>
+                      
+                      {/* Top Tagline Pill */}
+                      <Box
+                        sx={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: 1,
+                          px: 2,
+                          py: 0.75,
+                          mb: 3,
+                          borderRadius: '50px',
+                          bgcolor: 'rgba(0, 180, 216, 0.1)',
+                          border: '1px solid rgba(0, 180, 216, 0.35)',
+                          color: 'secondary.main',
+                          fontSize: '0.875rem',
+                          fontWeight: 600,
+                          backdropFilter: 'blur(6px)',
+                        }}
+                      >
+                        <WhatshotIcon fontSize="small" sx={{ color: 'warning.main' }} />
+                        Fast. Reliable. Results-Driven.
+                      </Box>
+            
+                      {/* Main Headline */}
+                      <Typography
+                        component="h1"
+                        sx={{
+                          fontWeight: 800,
+                          letterSpacing: '-0.03em',
+                          lineHeight: 1.1,
+                          mb: 2.5,
+                          fontSize: { xs: '2.5rem', sm: '3.2rem', md: '3.8rem' },
+                        }}
+                      >
+                        Web Solutions That{' '}
+                        <Box
+                          component="span"
+                          sx={{
+                            background: 'linear-gradient(90deg, #00B4D8 0%, #48CAE4 45%, #F77F00 100%)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                          }}
+                        >
+                          Grow Your Business
+                        </Box>
+                      </Typography>
+            
+                      {/* Subheading Badge */}
+                      <Typography
+                        sx={{
+                          color: 'warning.main',
+                          fontWeight: 600,
+                          mb: 2.5,
+                          letterSpacing: '0.12em',
+                          textTransform: 'uppercase',
+                          fontSize: { xs: '0.85rem', md: '1rem' },
+                        }}
+                      >
+                        Custom Websites &amp; Digital Experiences
+                      </Typography>
+            
+                      {/* Body Description */}
+                      <Typography
+                        sx={{
+                          mb: 5,
+                          color: 'grey.300',
+                          maxWidth: 560,
+                          mx: { xs: 'auto', md: 0 },
+                          fontSize: { xs: '1.05rem', md: '1.15rem' },
+                          lineHeight: 1.75,
+                        }}
+                      >
+                        We craft modern, high-performing websites and online platforms designed to engage your customers, elevate your brand, and drive real results.
+                      </Typography>
+            
+                      {/* Action Buttons */}
+                      <Stack
+                        direction={{ xs: 'column', sm: 'row' }}
+                        spacing={2}
+                        sx={{ justifyContent: { xs: 'center', md: 'flex-start' } }}
+                      >
+                        <Button
+                          variant="contained"
+                          color="secondary"
+                          size="large"
+                          component={Link}
+                          href="/contact"
+                          endIcon={<ArrowForwardIcon />}
+                          sx={{
+                            px: 4,
+                            py: 1.6,
+                            fontWeight: 700,
+                            fontSize: '1rem',
+                            borderRadius: '999px',
+                            textTransform: 'none',
+                            color: 'primary.main',
+                            boxShadow: '0 10px 30px rgba(0, 180, 216, 0.35)',
+                            transition: 'all 0.3s ease',
+                            '&:hover': { transform: 'translateY(-3px)', boxShadow: '0 14px 36px rgba(0, 180, 216, 0.5)' },
+                          }}
+                        >
+                          Start Your Project
+                        </Button>
+                        <Button
+                          variant="outlined"
+                          size="large"
+                          component={Link}
+                          href="/portfolio"
+                          sx={{
+                            px: 4,
+                            py: 1.6,
+                            fontWeight: 600,
+                            fontSize: '1rem',
+                            borderRadius: '999px',
+                            textTransform: 'none',
+                            color: 'white',
+                            borderColor: 'rgba(255,255,255,0.35)',
+                            transition: 'all 0.3s ease',
+                            '&:hover': { borderColor: 'warning.main', bgcolor: 'rgba(247,127,0,0.08)' },
+                          }}
+                        >
+                          View Our Work
+                        </Button>
+                      </Stack>
+            
+                    </Box>
             </Grid>
 
-            {/* Right: floating code window (desktop only) */}
+            {/* Right: device showcase (desktop only) */}
             <Grid size={{ xs: 12, md: 5 }} sx={{ display: { xs: 'none', md: 'block' } }}>
-              <Box sx={{ position: 'relative', animation: `${floatY} 6s ease-in-out infinite` }}>
-                <Box
-                  sx={{
-                    borderRadius: '18px',
-                    bgcolor: 'rgba(13, 30, 56, 0.75)',
-                    border: '1px solid rgba(255,255,255,0.12)',
-                    backdropFilter: 'blur(14px)',
-                    boxShadow: '0 30px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(0,180,216,0.15)',
-                    overflow: 'hidden',
-                  }}
-                >
-                  <Box sx={{ display: 'flex', gap: 1, px: 2, py: 1.5, bgcolor: 'rgba(255,255,255,0.05)' }}>
-                    {['#FF5F56', '#FFBD2E', '#27C93F'].map((c) => (
-                      <Box key={c} sx={{ width: 11, height: 11, borderRadius: '50%', bgcolor: c }} />
-                    ))}
-                    <Typography variant="caption" sx={{ ml: 1, color: 'grey.500', fontFamily: 'monospace' }}>
-                      agnik.config.ts
-                    </Typography>
-                  </Box>
-                  <Box
-                    component="pre"
-                    sx={{
-                      m: 0,
-                      p: 3,
-                      fontFamily: '"Fira Code", "Courier New", monospace',
-                      fontSize: '0.85rem',
-                      lineHeight: 1.9,
-                      color: 'grey.300',
-                      whiteSpace: 'pre-wrap',
-                    }}
-                  >
-                    <Box component="span" sx={{ color: '#F77F00' }}>const</Box> project = {'{'}
-                    {'\n'}  stack: [<Box component="span" sx={{ color: '#48CAE4' }}>'Next.js'</Box>,{' '}
-                    <Box component="span" sx={{ color: '#48CAE4' }}>'Node'</Box>,{' '}
-                    <Box component="span" sx={{ color: '#48CAE4' }}>'AWS'</Box>],
-                    {'\n'}  performance: <Box component="span" sx={{ color: '#48CAE4' }}>'blazing'</Box>,
-                    {'\n'}  security: <Box component="span" sx={{ color: '#48CAE4' }}>'airtight'</Box>,
-                    {'\n'}  status: <Box component="span" sx={{ color: '#27C93F' }}>'ready to launch'</Box>
-                    {'\n'}{'}'};
-                  </Box>
-                </Box>
-
-                {/* floating badges */}
-                <Chip
-                  icon={<RocketLaunchOutlinedIcon sx={{ color: '#F77F00 !important' }} />}
-                  label="Deployed"
-                  sx={{
-                    position: 'absolute',
-                    bottom: -18,
-                    left: -24,
-                    bgcolor: 'white',
-                    color: 'primary.main',
-                    fontWeight: 700,
-                    boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
-                  }}
-                />
-                <Chip
-                  icon={<ShieldOutlinedIcon sx={{ color: '#00B4D8 !important' }} />}
-                  label="Secure"
-                  sx={{
-                    position: 'absolute',
-                    top: -16,
-                    right: -16,
-                    bgcolor: 'white',
-                    color: 'primary.main',
-                    fontWeight: 700,
-                    boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
-                  }}
-                />
-              </Box>
+              <HeroShowcase />
             </Grid>
           </Grid>
         </Container>
@@ -424,24 +357,27 @@ export default function Home() {
                   '&:hover': { transform: 'translateY(-8px)', borderColor: p.color },
                 }}
               >
-                <Box
-                  sx={{
-                    width: 60,
-                    height: 60,
-                    borderRadius: '16px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    mb: 2.5,
-                    color: p.color,
-                    bgcolor: `${p.color}18`,
-                  }}
-                >
-                  {p.icon}
+                {/* icon + title on the same row */}
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                  <Box
+                    sx={{
+                      width: 56,
+                      height: 56,
+                      flexShrink: 0,
+                      borderRadius: '16px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: p.color,
+                      bgcolor: `${p.color}18`,
+                    }}
+                  >
+                    {p.icon}
+                  </Box>
+                  <Typography variant="h5" sx={{ fontWeight: 800, color: 'text.primary' }}>
+                    {p.title}
+                  </Typography>
                 </Box>
-                <Typography variant="h5" sx={{ fontWeight: 800, color: 'text.primary', mb: 1 }}>
-                  {p.title}
-                </Typography>
                 <Typography sx={{ color: 'text.secondary', lineHeight: 1.7 }}>{p.desc}</Typography>
               </Card>
             </Grid>
@@ -493,27 +429,30 @@ export default function Home() {
                   '&:hover .svc-icon': { bgcolor: 'primary.main', color: 'secondary.main' },
                 }}
               >
-                <Box
-                  className="svc-icon"
-                  sx={{
-                    width: 62,
-                    height: 62,
-                    borderRadius: '14px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    mb: 2.5,
-                    color: 'secondary.main',
-                    bgcolor: 'rgba(0, 180, 216, 0.1)',
-                    transition: 'all 0.35s ease',
-                    '& svg': { fontSize: 32 },
-                  }}
-                >
-                  {s.icon}
+                {/* icon + title on the same row */}
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                  <Box
+                    className="svc-icon"
+                    sx={{
+                      width: 54,
+                      height: 54,
+                      flexShrink: 0,
+                      borderRadius: '14px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'secondary.main',
+                      bgcolor: 'rgba(0, 180, 216, 0.1)',
+                      transition: 'all 0.35s ease',
+                      '& svg': { fontSize: 28 },
+                    }}
+                  >
+                    {s.icon}
+                  </Box>
+                  <Typography variant="h6" sx={{ fontWeight: 700, fontSize: '1.1rem', lineHeight: 1.3, color: 'text.primary' }}>
+                    {s.title}
+                  </Typography>
                 </Box>
-                <Typography variant="h6" sx={{ fontWeight: 700, color: 'text.primary', mb: 1 }}>
-                  {s.title}
-                </Typography>
                 <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
                   {s.desc}
                 </Typography>
@@ -570,22 +509,25 @@ export default function Home() {
                     '&:hover': { bgcolor: 'rgba(255,255,255,0.08)', borderColor: 'rgba(247,127,0,0.6)' },
                   }}
                 >
-                  <Typography
-                    sx={{
-                      fontSize: '2.6rem',
-                      fontWeight: 800,
-                      lineHeight: 1,
-                      mb: 2,
-                      background: 'linear-gradient(90deg, #00B4D8, #F77F00)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                    }}
-                  >
-                    {step.no}
-                  </Typography>
-                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
-                    {step.title}
-                  </Typography>
+                  {/* number + title on the same row */}
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                    <Typography
+                      sx={{
+                        fontSize: '2.2rem',
+                        fontWeight: 800,
+                        lineHeight: 1,
+                        flexShrink: 0,
+                        background: 'linear-gradient(90deg, #00B4D8, #F77F00)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                      }}
+                    >
+                      {step.no}
+                    </Typography>
+                    <Typography variant="h6" sx={{ fontWeight: 700, lineHeight: 1.3 }}>
+                      {step.title}
+                    </Typography>
+                  </Box>
                   <Typography variant="body2" sx={{ color: 'grey.400', lineHeight: 1.7 }}>
                     {step.desc}
                   </Typography>
@@ -600,7 +542,7 @@ export default function Home() {
           WHY US + TECH STACK
           ========================================== */}
       <Container maxWidth="lg" sx={{ py: { xs: 10, md: 14 } }}>
-        <Grid container spacing={{ xs: 6, md: 8 }} sx={{alignItems:"center"}}>
+        <Grid container spacing={{ xs: 6, md: 8 }} sx={{ alignItems: "center" }}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography
               variant="subtitle2"
