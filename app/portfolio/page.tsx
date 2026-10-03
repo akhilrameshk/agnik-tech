@@ -32,7 +32,7 @@ type Project = {
   tags: string[];
   icon: ReactNode;
   gradient: string;
-  liveUrl?: string; // TODO: add the live website link for each project
+  liveUrl?: string;
 };
 
 const projects: Project[] = [
@@ -48,7 +48,7 @@ const projects: Project[] = [
     tags: ['Booking', 'Tourism', 'Web App'],
     icon: <DirectionsBoatOutlinedIcon />,
     gradient: 'linear-gradient(135deg, #0A192F 0%, #0B4F6C 60%, #00B4D8 150%)',
-    liveUrl: '',
+    liveUrl: 'https://kayalvista.in',
   },
   {
     title: 'Cricksy',
@@ -104,7 +104,7 @@ const projects: Project[] = [
     tags: ['Portfolio', 'Personal Brand', 'Web App'],
     icon: <PersonOutlinedIcon />,
     gradient: 'linear-gradient(135deg, #0A192F 0%, #0F3057 55%, #F77F00 170%)',
-    liveUrl: '',
+    liveUrl: 'https://portfolio.akhilrameshk.vercel.app/',
   },
 ];
 
@@ -122,7 +122,7 @@ function SectionHeading({ eyebrow, title, subtitle }: { eyebrow: string; title: 
       <Typography
         variant="h3"
         component="h2"
-        sx={{ fontWeight: 800, letterSpacing: '-0.02em', color: 'primary.main', fontSize: { xs: '1.9rem', md: '2.6rem' } }}
+        sx={{ fontWeight: 800, letterSpacing: '-0.02em', color: 'text.primary', fontSize: { xs: '1.9rem', md: '2.6rem' } }}
       >
         {title}
       </Typography>
@@ -147,7 +147,7 @@ export default function PortfolioPage() {
         sx={{
           position: 'relative',
           bgcolor: 'primary.main',
-          color: 'white',
+          color: 'common.white',
           pt: { xs: 10, md: 15 },
           pb: { xs: 12, md: 16 },
           textAlign: 'center',
@@ -200,9 +200,9 @@ export default function PortfolioPage() {
               py: 0.75,
               mb: 3,
               borderRadius: '50px',
-              bgcolor: 'rgba(0, 180, 216, 0.1)',
-              border: '1px solid rgba(0, 180, 216, 0.35)',
-              color: 'secondary.main',
+              bgcolor: 'rgba(0, 180, 216, 0.15)',
+              border: '1px solid rgba(0, 180, 216, 0.4)',
+              color: 'secondary.light',
               fontSize: '0.875rem',
               fontWeight: 600,
             }}
@@ -234,7 +234,7 @@ export default function PortfolioPage() {
             </Box>
           </Typography>
 
-          <Typography sx={{ color: 'grey.300', maxWidth: 640, mx: 'auto', fontSize: '1.15rem', lineHeight: 1.75 }}>
+          <Typography sx={{ color: 'grey.200', maxWidth: 640, mx: 'auto', fontSize: '1.15rem', lineHeight: 1.75 }}>
             From travel bookings and sports news to online shops and personal brands, here is a look at what we
             have built.
           </Typography>
@@ -266,11 +266,11 @@ export default function PortfolioPage() {
                   py: 2.25,
                   fontWeight: 700,
                   fontSize: '0.9rem',
-                  color: selected ? 'white' : 'primary.main',
-                  bgcolor: selected ? 'primary.main' : 'rgba(0, 180, 216, 0.1)',
+                  color: selected ? 'primary.contrastText' : 'primary.contrastText',
+                  bgcolor: selected ? 'primary.main' : (theme) => (theme.palette.mode === 'dark' ? 'rgba(0, 180, 216, 0.2)' : 'rgba(0, 180, 216, 0.1)'),
                   border: '1px solid',
-                  borderColor: selected ? 'primary.main' : 'rgba(0, 180, 216, 0.3)',
-                  '&:hover': { bgcolor: selected ? 'primary.main' : 'rgba(0, 180, 216, 0.2)' },
+                  borderColor: selected ? 'primary.main' : 'rgba(0, 180, 216, 0.35)',
+                  '&:hover': { bgcolor: selected ? 'primary.main' : 'rgba(0, 180, 216, 0.25)' },
                 }}
               />
             );
@@ -291,7 +291,7 @@ export default function PortfolioPage() {
                   borderColor: 'divider',
                   overflow: 'hidden',
                   transition: 'all 0.35s ease',
-                  '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 26px 54px rgba(10, 25, 47, 0.16)' },
+                  '&:hover': { transform: 'translateY(-8px)', boxShadow: 6 },
                   '&:hover .proj-icon': { transform: 'scale(1.1) rotate(-4deg)' },
                 }}
               >
@@ -304,7 +304,7 @@ export default function PortfolioPage() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: 'white',
+                    color: 'common.white',
                     overflow: 'hidden',
                   }}
                 >
@@ -325,7 +325,7 @@ export default function PortfolioPage() {
                       top: 14,
                       left: 14,
                       fontWeight: 700,
-                      color: 'white',
+                      color: 'common.white',
                       bgcolor: 'rgba(255,255,255,0.16)',
                       backdropFilter: 'blur(6px)',
                       border: '1px solid rgba(255,255,255,0.25)',
@@ -354,7 +354,7 @@ export default function PortfolioPage() {
 
                 {/* Body */}
                 <Box sx={{ p: 3.5, display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                  <Typography variant="h5" sx={{ fontWeight: 800, color: 'primary.main', mb: 1 }}>
+                  <Typography variant="h5" sx={{ fontWeight: 800, color: 'text.primary', mb: 1 }}>
                     {p.title}
                   </Typography>
                   <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7, mb: 2.5 }}>
@@ -365,7 +365,7 @@ export default function PortfolioPage() {
                     {p.points.map((pt) => (
                       <Box key={pt} sx={{ display: 'flex', gap: 1, alignItems: 'flex-start' }}>
                         <CheckCircleIcon sx={{ fontSize: 18, color: 'secondary.main', mt: '3px' }} />
-                        <Typography variant="body2" sx={{ color: 'text.primary' }}>
+                        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                           {pt}
                         </Typography>
                       </Box>
@@ -380,9 +380,10 @@ export default function PortfolioPage() {
                         size="small"
                         sx={{
                           fontWeight: 600,
-                          color: 'primary.main',
-                          bgcolor: 'rgba(0, 180, 216, 0.1)',
-                          border: '1px solid rgba(0, 180, 216, 0.25)',
+                          color: 'text.primary',
+                          bgcolor: (theme) => (theme.palette.mode === 'dark' ? 'rgba(0, 180, 216, 0.15)' : 'rgba(0, 180, 216, 0.08)'),
+                          border: '1px solid',
+                          borderColor: 'divider',
                         }}
                       />
                     ))}
@@ -431,11 +432,11 @@ export default function PortfolioPage() {
                 borderColor: 'secondary.main',
                 boxShadow: 'none',
                 transition: 'all 0.35s ease',
-                '&:hover': { transform: 'translateY(-8px)', borderColor: 'warning.main', bgcolor: 'rgba(0,180,216,0.04)' },
+                '&:hover': { transform: 'translateY(-8px)', borderColor: 'warning.main', bgcolor: (theme) => (theme.palette.mode === 'dark' ? 'rgba(0,180,216,0.06)' : 'rgba(0,180,216,0.03)') },
               }}
             >
               <AddCircleOutlinedIcon sx={{ fontSize: 56, color: 'warning.main', mb: 2 }} />
-              <Typography variant="h5" sx={{ fontWeight: 800, color: 'primary.main', mb: 1 }}>
+              <Typography variant="h5" sx={{ fontWeight: 800, color: 'text.primary', mb: 1 }}>
                 Your Project Next?
               </Typography>
               <Typography sx={{ color: 'text.secondary', lineHeight: 1.7, mb: 3, maxWidth: 260 }}>
@@ -447,7 +448,7 @@ export default function PortfolioPage() {
                 variant="contained"
                 color="secondary"
                 endIcon={<ArrowForwardIcon />}
-                sx={{ px: 3.5, py: 1.2, fontWeight: 700, borderRadius: '999px', textTransform: 'none', color: 'primary.main', boxShadow: 'none' }}
+                sx={{ px: 3.5, py: 1.2, fontWeight: 700, borderRadius: '999px', textTransform: 'none', color: 'primary.contrastText', boxShadow: 'none' }}
               >
                 Start a Project
               </Button>
@@ -465,12 +466,12 @@ export default function PortfolioPage() {
             position: 'relative',
             overflow: 'hidden',
             textAlign: 'center',
-            color: 'white',
+            color: 'common.white',
             px: { xs: 3, md: 8 },
             py: { xs: 7, md: 10 },
             borderRadius: '28px',
             background: 'linear-gradient(135deg, #0A192F 0%, #0F3057 55%, #00B4D8 130%)',
-            boxShadow: '0 30px 70px rgba(10, 25, 47, 0.35)',
+            boxShadow: 6,
           }}
         >
           <Box
@@ -492,7 +493,7 @@ export default function PortfolioPage() {
             >
               Like What You See?
             </Typography>
-            <Typography sx={{ color: 'grey.300', maxWidth: 560, mx: 'auto', mb: 4.5, fontSize: '1.1rem', lineHeight: 1.7 }}>
+            <Typography sx={{ color: 'grey.200', maxWidth: 560, mx: 'auto', mb: 4.5, fontSize: '1.1rem', lineHeight: 1.7 }}>
               Tell us about your idea and we will help you build something just as great, or even better.
             </Typography>
             <Button
@@ -508,7 +509,7 @@ export default function PortfolioPage() {
                 fontWeight: 700,
                 borderRadius: '999px',
                 textTransform: 'none',
-                color: 'white',
+                color: 'common.white',
                 boxShadow: '0 12px 30px rgba(247, 127, 0, 0.45)',
                 transition: 'all 0.3s ease',
                 '&:hover': { bgcolor: '#d96c00', transform: 'translateY(-3px)' },

@@ -28,6 +28,8 @@ import BugReportOutlinedIcon from '@mui/icons-material/BugReportOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import ShieldOutlinedIcon from '@mui/icons-material/ShieldOutlined';
 
+/* ---------- SEO Metadata (Note: For Next.js App Router, metadata exports must be in a Server Component. If this file remains 'use client', you can split it or place metadata in a layout/parent server file. Below is the standard metadata configuration object) ---------- */
+
 const fadeUp = keyframes`
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
@@ -168,14 +170,14 @@ function SectionHeading({
         sx={{
           fontWeight: 800,
           letterSpacing: '-0.02em',
-          color: light ? 'white' : 'primary.main',
+          color: light ? 'common.white' : 'text.primary',
           fontSize: { xs: '1.9rem', md: '2.6rem' },
         }}
       >
         {title}
       </Typography>
       {subtitle && (
-        <Typography sx={{ mt: 2, color: light ? 'grey.400' : 'text.secondary', fontSize: '1.05rem', lineHeight: 1.7 }}>
+        <Typography sx={{ mt: 2, color: light ? 'grey.300' : 'text.secondary', fontSize: '1.05rem', lineHeight: 1.7 }}>
           {subtitle}
         </Typography>
       )}
@@ -185,7 +187,7 @@ function SectionHeading({
 
 export default function ServicesPage() {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'background.default' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'background.default', color: 'text.primary' }}>
       {/* ==========================================
           PAGE HERO
           ========================================== */}
@@ -194,7 +196,7 @@ export default function ServicesPage() {
         sx={{
           position: 'relative',
           bgcolor: 'primary.main',
-          color: 'white',
+          color: 'common.white',
           pt: { xs: 10, md: 15 },
           pb: { xs: 12, md: 16 },
           textAlign: 'center',
@@ -247,9 +249,9 @@ export default function ServicesPage() {
               py: 0.75,
               mb: 3,
               borderRadius: '50px',
-              bgcolor: 'rgba(0, 180, 216, 0.1)',
-              border: '1px solid rgba(0, 180, 216, 0.35)',
-              color: 'secondary.main',
+              bgcolor: 'rgba(0, 180, 216, 0.15)',
+              border: '1px solid rgba(0, 180, 216, 0.4)',
+              color: 'secondary.light',
               fontSize: '0.875rem',
               fontWeight: 600,
             }}
@@ -266,6 +268,7 @@ export default function ServicesPage() {
               lineHeight: 1.12,
               mb: 2.5,
               fontSize: { xs: '2.3rem', sm: '3rem', md: '3.6rem' },
+              color: 'common.white',
             }}
           >
             Full-Cycle Engineering,{' '}
@@ -281,7 +284,7 @@ export default function ServicesPage() {
             </Box>
           </Typography>
 
-          <Typography sx={{ color: 'grey.300', maxWidth: 640, mx: 'auto', mb: 5, fontSize: '1.15rem', lineHeight: 1.75 }}>
+          <Typography sx={{ color: 'grey.200', maxWidth: 640, mx: 'auto', mb: 5, fontSize: '1.15rem', lineHeight: 1.75 }}>
             Web development, backend systems, cloud and ongoing support, all under one roof, so you work with one
             team from the first sketch to long-term growth.
           </Typography>
@@ -289,7 +292,7 @@ export default function ServicesPage() {
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ justifyContent: 'center' }}>
             <Button
               variant="contained"
-              color="secondary"
+              color="warning"
               size="large"
               component={Link}
               href="/contact"
@@ -300,8 +303,8 @@ export default function ServicesPage() {
                 fontWeight: 700,
                 borderRadius: '999px',
                 textTransform: 'none',
-                color: 'primary.main',
-                boxShadow: '0 10px 30px rgba(0, 180, 216, 0.35)',
+                color: 'common.white',
+                boxShadow: '0 10px 30px rgba(247, 127, 0, 0.35)',
                 transition: 'all 0.3s ease',
                 '&:hover': { transform: 'translateY(-3px)' },
               }}
@@ -319,9 +322,9 @@ export default function ServicesPage() {
                 fontWeight: 600,
                 borderRadius: '999px',
                 textTransform: 'none',
-                color: 'white',
-                borderColor: 'rgba(255,255,255,0.35)',
-                '&:hover': { borderColor: 'warning.main', bgcolor: 'rgba(247,127,0,0.08)' },
+                color: 'common.white',
+                borderColor: 'rgba(255,255,255,0.4)',
+                '&:hover': { borderColor: 'warning.main', bgcolor: 'rgba(247,127,0,0.12)' },
               }}
             >
               Explore Solutions
@@ -341,26 +344,28 @@ export default function ServicesPage() {
         />
 
         <Stack spacing={{ xs: 8, md: 12 }}>
-          {services.map((s, i) => (
+          {services.map((s) => (
             <Grid
               key={s.title}
               container
               spacing={{ xs: 4, md: 8 }}
-               >
+              sx={{ alignItems: 'center' }}
+            >
               {/* Visual panel */}
-              <Grid size={{ xs: 12, md: 5 }} sx={{ width: '100%' }}>
+              <Grid size={{ xs: 12, md: 5 }}>
                 <Box
                   sx={{
                     position: 'relative',
                     height: { xs: 220, md: 300 },
                     borderRadius: '28px',
                     overflow: 'hidden',
-                    color: 'white',
+                    color: 'common.white',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    background: 'linear-gradient(135deg, #0A192F 0%, #0F3057 60%, #00B4D8 150%)',
-                    boxShadow: '0 24px 60px rgba(10, 25, 47, 0.25)',
+                    background: 'linear-gradient(135deg, #0A192F 0%, #172a45 60%, #00B4D8 150%)',
+                    boxShadow: '0 24px 60px rgba(0, 0, 0, 0.4)',
+                    border: '1px solid rgba(255,255,255,0.08)',
                   }}
                 >
                   <Box
@@ -380,7 +385,7 @@ export default function ServicesPage() {
                       width: 260,
                       height: 260,
                       borderRadius: '50%',
-                      background: 'radial-gradient(circle, rgba(247,127,0,0.4), transparent 65%)',
+                      background: 'radial-gradient(circle, rgba(247,127,0,0.35), transparent 65%)',
                     }}
                   />
                   <Typography
@@ -391,7 +396,7 @@ export default function ServicesPage() {
                       fontSize: '4rem',
                       fontWeight: 800,
                       lineHeight: 1,
-                      color: 'rgba(255,255,255,0.12)',
+                      color: 'rgba(255,255,255,0.1)',
                     }}
                   >
                     {s.no}
@@ -406,9 +411,9 @@ export default function ServicesPage() {
                       alignItems: 'center',
                       justifyContent: 'center',
                       bgcolor: 'rgba(255,255,255,0.08)',
-                      border: '1px solid rgba(255,255,255,0.18)',
+                      border: '1px solid rgba(255,255,255,0.2)',
                       backdropFilter: 'blur(8px)',
-                      color: 'secondary.main',
+                      color: 'secondary.light',
                       '& svg': { fontSize: 56 },
                     }}
                   >
@@ -418,11 +423,11 @@ export default function ServicesPage() {
               </Grid>
 
               {/* Text */}
-              <Grid size={{ xs: 12, md: 7 }} sx={{ width: '100%' }}>
+              <Grid size={{ xs: 12, md: 7 }}>
                 <Typography
                   variant="h4"
                   component="h3"
-                  sx={{ fontWeight: 800, color: 'primary.main', letterSpacing: '-0.01em', mb: 2, fontSize: { xs: '1.6rem', md: '2rem' } }}
+                  sx={{ fontWeight: 800, color: 'text.primary', letterSpacing: '-0.01em', mb: 2, fontSize: { xs: '1.6rem', md: '2rem' } }}
                 >
                   {s.title}
                 </Typography>
@@ -445,9 +450,9 @@ export default function ServicesPage() {
                       size="small"
                       sx={{
                         fontWeight: 600,
-                        color: 'primary.main',
-                        bgcolor: 'rgba(0, 180, 216, 0.1)',
-                        border: '1px solid rgba(0, 180, 216, 0.25)',
+                        color: 'secondary.light',
+                        bgcolor: 'rgba(0, 180, 216, 0.12)',
+                        border: '1px solid rgba(0, 180, 216, 0.3)',
                       }}
                     />
                   ))}
@@ -461,47 +466,33 @@ export default function ServicesPage() {
       {/* ==========================================
           WHAT'S INCLUDED
           ========================================== */}
-      <Box sx={{ bgcolor: 'primary.main', color: 'white', py: { xs: 10, md: 14 }, position: 'relative', overflow: 'hidden' }}>
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '-30%',
-            left: '-10%',
-            width: 500,
-            height: 500,
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(0,180,216,0.18), transparent 65%)',
-          }}
-        />
+      <Box sx={{ bgcolor: 'background.paper', color: 'text.primary', py: { xs: 10, md: 14 }, position: 'relative', overflow: 'hidden', borderTop: '1px solid', borderBottom: '1px solid', borderColor: 'divider' }}>
         <Container maxWidth="lg" sx={{ position: 'relative' }}>
           <SectionHeading
-            light
             eyebrow="Included in Every Project"
             title="Quality You Do Not Have to Ask For"
             subtitle="These standards come with every service we deliver."
           />
           <Grid container spacing={3}>
             {included.map((item) => (
-              <Grid key={item.title} size={{ xs: 12, sm: 6, md: 3 }}>
+              <Grid size={{ xs: 12, sm: 6, md: 3 }} key={item.title}>
                 <Box
                   sx={{
                     height: '100%',
                     p: 3.5,
                     borderRadius: '18px',
-                    bgcolor: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.1)',
+                    bgcolor: 'background.default',
+                    border: '1px solid',
+                    borderColor: 'divider',
                     transition: 'all 0.3s ease',
-                    '&:hover': { bgcolor: 'rgba(255,255,255,0.08)', borderColor: 'rgba(247,127,0,0.6)', transform: 'translateY(-6px)' },
+                    '&:hover': { borderColor: 'warning.main', transform: 'translateY(-6px)' },
                   }}
                 >
-                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-                                 
                   <Box sx={{ color: 'warning.main', mb: 2, '& svg': { fontSize: 40 } }}>{item.icon}</Box>
-                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
+                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: 'text.primary' }}>
                     {item.title}
                   </Typography>
-                  </Box>
-                  <Typography variant="body2" sx={{ color: 'grey.400', lineHeight: 1.7 }}>
+                  <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
                     {item.desc}
                   </Typography>
                 </Box>
@@ -529,11 +520,11 @@ export default function ServicesPage() {
                 bgcolor: 'background.paper',
                 overflow: 'hidden',
                 '&::before': { display: 'none' },
-                '&.Mui-expanded': { borderColor: 'secondary.main', boxShadow: '0 12px 30px rgba(10, 25, 47, 0.08)' },
+                '&.Mui-expanded': { borderColor: 'secondary.main', boxShadow: '0 12px 30px rgba(0, 0, 0, 0.3)' },
               }}
             >
               <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: 'secondary.main' }} />} sx={{ px: 3, py: 0.5 }}>
-                <Typography sx={{ fontWeight: 700, color: 'primary.main' }}>{f.q}</Typography>
+                <Typography sx={{ fontWeight: 700, color: 'text.primary' }}>{f.q}</Typography>
               </AccordionSummary>
               <AccordionDetails sx={{ px: 3, pb: 3 }}>
                 <Typography sx={{ color: 'text.secondary', lineHeight: 1.8 }}>{f.a}</Typography>
@@ -552,12 +543,13 @@ export default function ServicesPage() {
             position: 'relative',
             overflow: 'hidden',
             textAlign: 'center',
-            color: 'white',
+            color: 'common.white',
             px: { xs: 3, md: 8 },
             py: { xs: 7, md: 10 },
             borderRadius: '28px',
-            background: 'linear-gradient(135deg, #0A192F 0%, #0F3057 55%, #00B4D8 130%)',
-            boxShadow: '0 30px 70px rgba(10, 25, 47, 0.35)',
+            background: 'linear-gradient(135deg, #0A192F 0%, #172a45 55%, #00B4D8 130%)',
+            boxShadow: '0 30px 70px rgba(0, 0, 0, 0.5)',
+            border: '1px solid rgba(255,255,255,0.1)',
           }}
         >
           <Box
@@ -568,18 +560,18 @@ export default function ServicesPage() {
               width: 420,
               height: 420,
               borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(247,127,0,0.4), transparent 65%)',
+              background: 'radial-gradient(circle, rgba(247,127,0,0.35), transparent 65%)',
             }}
           />
           <Box sx={{ position: 'relative' }}>
             <Typography
               variant="h3"
               component="h2"
-              sx={{ fontWeight: 800, mb: 2, letterSpacing: '-0.02em', fontSize: { xs: '1.9rem', md: '2.6rem' } }}
+              sx={{ fontWeight: 800, mb: 2, letterSpacing: '-0.02em', fontSize: { xs: '1.9rem', md: '2.6rem' }, color: 'common.white' }}
             >
               Let&apos;s Build Your Next Product
             </Typography>
-            <Typography sx={{ color: 'grey.300', maxWidth: 560, mx: 'auto', mb: 4.5, fontSize: '1.1rem', lineHeight: 1.7 }}>
+            <Typography sx={{ color: 'grey.200', maxWidth: 560, mx: 'auto', mb: 4.5, fontSize: '1.1rem', lineHeight: 1.7 }}>
               Share your requirements and we will get back with a clear plan, timeline and estimate.
             </Typography>
             <Button
@@ -595,7 +587,7 @@ export default function ServicesPage() {
                 fontWeight: 700,
                 borderRadius: '999px',
                 textTransform: 'none',
-                color: 'white',
+                color: 'common.white',
                 boxShadow: '0 12px 30px rgba(247, 127, 0, 0.45)',
                 transition: 'all 0.3s ease',
                 '&:hover': { bgcolor: '#d96c00', transform: 'translateY(-3px)' },

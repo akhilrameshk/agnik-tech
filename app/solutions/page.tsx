@@ -5,7 +5,6 @@ import Link from 'next/link';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
-import DashboardCustomizeOutlinedIcon from '@mui/icons-material/DashboardCustomizeOutlined';
 import QueryStatsOutlinedIcon from '@mui/icons-material/QueryStatsOutlined';
 import StorefrontOutlinedIcon from '@mui/icons-material/StorefrontOutlined';
 import RocketLaunchOutlinedIcon from '@mui/icons-material/RocketLaunchOutlined';
@@ -17,6 +16,7 @@ import SportsEsportsOutlinedIcon from '@mui/icons-material/SportsEsportsOutlined
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import HandshakeOutlinedIcon from '@mui/icons-material/HandshakeOutlined';
 import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined';
+import DashboardCustomizeOutlinedIcon from '@mui/icons-material/DashboardCustomizeOutlined';
 
 const fadeUp = keyframes`
   from { opacity: 0; transform: translateY(24px); }
@@ -112,7 +112,7 @@ function SectionHeading({
     <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 }, maxWidth: 720, mx: 'auto' }}>
       <Typography
         variant="subtitle2"
-        sx={{ color: 'warning.main', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 3, mb: 1.5 }}
+        sx={{ color: light ? 'warning.light' : 'warning.main', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 3, mb: 1.5 }}
       >
         {eyebrow}
       </Typography>
@@ -122,14 +122,14 @@ function SectionHeading({
         sx={{
           fontWeight: 800,
           letterSpacing: '-0.02em',
-          color: light ? 'white' : 'primary.main',
+          color: light ? 'common.white' : 'text.primary',
           fontSize: { xs: '1.9rem', md: '2.6rem' },
         }}
       >
         {title}
       </Typography>
       {subtitle && (
-        <Typography sx={{ mt: 2, color: light ? 'grey.400' : 'text.secondary', fontSize: '1.05rem', lineHeight: 1.7 }}>
+        <Typography sx={{ mt: 2, color: light ? 'grey.300' : 'text.secondary', fontSize: '1.05rem', lineHeight: 1.7 }}>
           {subtitle}
         </Typography>
       )}
@@ -139,16 +139,14 @@ function SectionHeading({
 
 export default function SolutionsPage() {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'background.default' }}>
-      {/* ==========================================
-          PAGE HERO
-          ========================================== */}
+    <Box component="main" sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'background.default' }}>
+      {/* PAGE HERO */}
       <Box
         component="section"
         sx={{
           position: 'relative',
           bgcolor: 'primary.main',
-          color: 'white',
+          color: 'common.white',
           pt: { xs: 10, md: 15 },
           pb: { xs: 12, md: 16 },
           textAlign: 'center',
@@ -201,9 +199,9 @@ export default function SolutionsPage() {
               py: 0.75,
               mb: 3,
               borderRadius: '50px',
-              bgcolor: 'rgba(0, 180, 216, 0.1)',
-              border: '1px solid rgba(0, 180, 216, 0.35)',
-              color: 'secondary.main',
+              bgcolor: 'rgba(0, 180, 216, 0.15)',
+              border: '1px solid rgba(0, 180, 216, 0.4)',
+              color: 'secondary.light',
               fontSize: '0.875rem',
               fontWeight: 600,
             }}
@@ -235,7 +233,7 @@ export default function SolutionsPage() {
             </Box>
           </Typography>
 
-          <Typography sx={{ color: 'grey.300', maxWidth: 640, mx: 'auto', mb: 5, fontSize: '1.15rem', lineHeight: 1.75 }}>
+          <Typography sx={{ color: 'grey.200', maxWidth: 640, mx: 'auto', mb: 5, fontSize: '1.15rem', lineHeight: 1.75 }}>
             Whatever you are building or fixing, we combine modern engineering with a security-first mindset to
             deliver software that performs, scales and lasts.
           </Typography>
@@ -254,7 +252,7 @@ export default function SolutionsPage() {
                 fontWeight: 700,
                 borderRadius: '999px',
                 textTransform: 'none',
-                color: 'primary.main',
+                color: 'primary.contrastText',
                 boxShadow: '0 10px 30px rgba(0, 180, 216, 0.35)',
                 transition: 'all 0.3s ease',
                 '&:hover': { transform: 'translateY(-3px)' },
@@ -273,9 +271,9 @@ export default function SolutionsPage() {
                 fontWeight: 600,
                 borderRadius: '999px',
                 textTransform: 'none',
-                color: 'white',
-                borderColor: 'rgba(255,255,255,0.35)',
-                '&:hover': { borderColor: 'warning.main', bgcolor: 'rgba(247,127,0,0.08)' },
+                color: 'common.white',
+                borderColor: 'rgba(255,255,255,0.4)',
+                '&:hover': { borderColor: 'warning.main', bgcolor: 'rgba(247,127,0,0.1)' },
               }}
             >
               View Our Work
@@ -284,106 +282,100 @@ export default function SolutionsPage() {
         </Container>
       </Box>
 
-      {/* ==========================================
-          SOLUTIONS GRID
-          ========================================== */}
-      <Container maxWidth="lg" sx={{ py: { xs: 10, md: 14 } }}>
-        <SectionHeading
-          eyebrow="What We Build"
-          title="End-to-End Solutions for Every Stage"
-          subtitle="Pick the solution that fits, or combine several. Every project is tailored to your users and goals."
-        />
+      {/* SOLUTIONS GRID */}
+      <Box component="section" sx={{ py: { xs: 10, md: 14 } }}>
+        <Container maxWidth="lg">
+          <SectionHeading
+            eyebrow="What We Build"
+            title="End-to-End Solutions for Every Stage"
+            subtitle="Pick the solution that fits, or combine several. Every project is tailored to your users and goals."
+          />
 
-        <Grid container spacing={3}>
-          {solutions.map((s) => (
-            <Grid key={s.title} size={{ xs: 12, md: 6, lg: 4 }}>
-              <Card
-                sx={{
-                  position: 'relative',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  p: 3.5,
-                  borderRadius: '20px',
-                  bgcolor: 'background.paper',
-                  border: '1px solid',
-                  borderColor: 'divider',
-                  overflow: 'hidden',
-                  transition: 'all 0.35s ease',
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: 4,
-                    background: 'linear-gradient(90deg, #00B4D8, #F77F00)',
-                    transform: 'scaleX(0)',
-                    transformOrigin: 'left',
-                    transition: 'transform 0.4s ease',
-                  },
-                  '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 24px 48px rgba(10, 25, 47, 0.12)' },
-                  '&:hover::before': { transform: 'scaleX(1)' },
-                  '&:hover .sol-icon': { bgcolor: 'primary.main', color: 'secondary.main' },
-                }}
-              >
-                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-               
-                <Box
-                  className="sol-icon"
+          <Grid container spacing={3}>
+            {solutions.map((s) => (
+              <Grid key={s.title} size={{ xs: 12, md: 6, lg: 4 }}>
+                <Card
                   sx={{
-                    width: 62,
-                    height: 62,
-                    borderRadius: '14px',
+                    position: 'relative',
+                    height: '100%',
                     display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    mb: 2.5,
-                    color: 'secondary.main',
-                    bgcolor: 'rgba(0, 180, 216, 0.1)',
+                    flexDirection: 'column',
+                    p: 3.5,
+                    borderRadius: '20px',
+                    bgcolor: 'background.paper',
+                    border: '1px solid',
+                    borderColor: 'divider',
+                    overflow: 'hidden',
                     transition: 'all 0.35s ease',
-                    '& svg': { fontSize: 32 },
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: 4,
+                      background: 'linear-gradient(90deg, #00B4D8, #F77F00)',
+                      transform: 'scaleX(0)',
+                      transformOrigin: 'left',
+                      transition: 'transform 0.4s ease',
+                    },
+                    '&:hover': { transform: 'translateY(-8px)', boxShadow: 6 },
+                    '&:hover::before': { transform: 'scaleX(1)' },
                   }}
                 >
-                  {s.icon}
-                </Box>
-                <Typography variant="h6" sx={{ fontWeight: 700, color: 'primary.main', mb: 1 }}>
-                  {s.title}
-                </Typography>
-                </Box>
-                <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7, mb: 2.5 }}>
-                  {s.desc}
-                </Typography>
-
-                <Stack spacing={1} sx={{ mb: 3 }}>
-                  {s.points.map((p) => (
-                    <Box key={p} sx={{ display: 'flex', gap: 1, alignItems: 'flex-start' }}>
-                      <CheckCircleIcon sx={{ fontSize: 18, color: 'secondary.main', mt: '3px' }} />
-                      <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                        {p}
-                      </Typography>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                    <Box
+                      sx={{
+                        width: 62,
+                        height: 62,
+                        borderRadius: '14px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: 'secondary.main',
+                        bgcolor: (theme) => (theme.palette.mode === 'dark' ? 'rgba(0, 180, 216, 0.2)' : 'rgba(0, 180, 216, 0.1)'),
+                        '& svg': { fontSize: 32 },
+                      }}
+                    >
+                      {s.icon}
                     </Box>
-                  ))}
-                </Stack>
+                    <Typography variant="h6" component="h3" sx={{ fontWeight: 700, color: 'text.primary' }}>
+                      {s.title}
+                    </Typography>
+                  </Box>
 
-                <Button
-                  component={Link}
-                  href="/contact"
-                  endIcon={<ArrowForwardIcon />}
-                  sx={{ mt: 'auto', alignSelf: 'flex-start', p: 0, fontWeight: 700, textTransform: 'none', color: 'primary.main' }}
-                >
-                  Discuss this solution
-                </Button>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
+                  <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7, mb: 2.5 }}>
+                    {s.desc}
+                  </Typography>
 
-      {/* ==========================================
-          INDUSTRIES
-          ========================================== */}
-      <Box sx={{ bgcolor: 'primary.main', color: 'white', py: { xs: 10, md: 14 }, position: 'relative', overflow: 'hidden' }}>
+                  <Stack spacing={1} sx={{ mb: 3 }}>
+                    {s.points.map((p) => (
+                      <Box key={p} sx={{ display: 'flex', gap: 1, alignItems: 'flex-start' }}>
+                        <CheckCircleIcon sx={{ fontSize: 18, color: 'secondary.main', mt: '3px' }} />
+                        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                          {p}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Stack>
+
+                  <Button
+                    component={Link}
+                    href="/contact"
+                    endIcon={<ArrowForwardIcon />}
+                    sx={{ mt: 'auto', alignSelf: 'flex-start', p: 0, fontWeight: 700, textTransform: 'none', color: 'primary.main' }}
+                  >
+                    Discuss this solution
+                  </Button>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* INDUSTRIES */}
+      <Box component="section" sx={{ bgcolor: 'primary.main', color: 'common.white', py: { xs: 10, md: 14 }, position: 'relative', overflow: 'hidden' }}>
         <Box
           sx={{
             position: 'absolute',
@@ -416,14 +408,14 @@ export default function SolutionsPage() {
                     '&:hover': { bgcolor: 'rgba(255,255,255,0.08)', borderColor: 'rgba(247,127,0,0.6)', transform: 'translateY(-6px)' },
                   }}
                 >
-                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-               
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                
                   <Box sx={{ color: 'warning.main', mb: 2, '& svg': { fontSize: 40 } }}>{i.icon}</Box>
-                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
+                  <Typography variant="h6" component="h3" sx={{ fontWeight: 700, mb: 1, color: 'common.white' }}>
                     {i.title}
                   </Typography>
                   </Box>
-                  <Typography variant="body2" sx={{ color: 'grey.400', lineHeight: 1.7 }}>
+                  <Typography variant="body2" sx={{ color: 'grey.300', lineHeight: 1.7 }}>
                     {i.desc}
                   </Typography>
                 </Box>
@@ -433,149 +425,151 @@ export default function SolutionsPage() {
         </Container>
       </Box>
 
-      {/* ==========================================
-          ENGAGEMENT MODELS
-          ========================================== */}
-      <Container maxWidth="lg" sx={{ py: { xs: 10, md: 14 } }}>
-        <SectionHeading
-          eyebrow="Ways to Work Together"
-          title="Flexible Engagement Models"
-          subtitle="Choose the setup that matches your budget, timeline and how involved you want to be."
-        />
-        <Grid container spacing={3}>
-          {models.map((m) => (
-            <Grid key={m.title} size={{ xs: 12, md: 4 }}>
-              <Card
-                sx={{
-                  height: '100%',
-                  p: 4,
-                  borderRadius: '20px',
-                  bgcolor: 'background.paper',
-                  border: '1px solid',
-                  borderColor: 'divider',
-                  boxShadow: '0 20px 50px rgba(10, 25, 47, 0.06)',
-                  transition: 'all 0.35s ease',
-                  '&:hover': { transform: 'translateY(-8px)', borderColor: 'warning.main' },
-                }}
-              >
-                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-               
-                <Box
+      {/* ENGAGEMENT MODELS */}
+      <Box component="section" sx={{ py: { xs: 10, md: 14 } }}>
+        <Container maxWidth="lg">
+          <SectionHeading
+            eyebrow="Ways to Work Together"
+            title="Flexible Engagement Models"
+            subtitle="Choose the setup that matches your budget, timeline and how involved you want to be."
+          />
+          <Grid container spacing={3}>
+            {models.map((m) => (
+              <Grid key={m.title} size={{ xs: 12, md: 4 }}>
+                <Card
                   sx={{
-                    width: 58,
-                    height: 58,
-                    borderRadius: '16px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    mb: 2.5,
-                    color: 'warning.main',
-                    bgcolor: 'rgba(247, 127, 0, 0.1)',
-                    '& svg': { fontSize: 30 },
+                    height: '100%',
+                    p: 4,
+                    borderRadius: '20px',
+                    bgcolor: 'background.paper',
+                    border: '1px solid',
+                    borderColor: 'divider',
+                    boxShadow: 2,
+                    transition: 'all 0.35s ease',
+                    '&:hover': { transform: 'translateY(-8px)', borderColor: 'warning.main' },
                   }}
                 >
-                  {m.icon}
-                </Box>
-                <Typography variant="h6" sx={{ fontWeight: 800, color: 'primary.main', mb: 1 }}>
-                  {m.title}
-                </Typography>
-                </Box>
-                <Typography sx={{ color: 'text.secondary', lineHeight: 1.7, mb: 2 }}>{m.desc}</Typography>
-                <Chip
-                  label={m.best}
-                  size="small"
-                  sx={{ fontWeight: 600, color: 'primary.main', bgcolor: 'rgba(0, 180, 216, 0.1)' }}
-                />
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-
-        {/* Tech stack strip */}
-        <Box sx={{ mt: 8, textAlign: 'center' }}>
-          <Typography variant="subtitle2" sx={{ color: 'text.secondary', fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', mb: 2 }}>
-            Powered by modern technology
-          </Typography>
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.25, justifyContent: 'center' }}>
-            {stackFor.map((t) => (
-              <Chip
-                key={t}
-                label={t}
-                sx={{
-                  fontWeight: 600,
-                  color: 'primary.main',
-                  bgcolor: 'rgba(0, 180, 216, 0.1)',
-                  border: '1px solid rgba(0, 180, 216, 0.25)',
-                }}
-              />
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                
+                  <Box
+                    sx={{
+                      width: 58,
+                      height: 58,
+                      borderRadius: '16px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mb: 2.5,
+                      color: 'warning.main',
+                      bgcolor: (theme) => (theme.palette.mode === 'dark' ? 'rgba(247, 127, 0, 0.2)' : 'rgba(247, 127, 0, 0.1)'),
+                      '& svg': { fontSize: 30 },
+                    }}
+                  >
+                    {m.icon}
+                  </Box>
+                  
+                  <Typography variant="h6" component="h3" sx={{ fontWeight: 800, color: 'text.primary', mb: 1 }}>
+                    {m.title}
+                  </Typography>
+                  </Box>
+                  <Typography sx={{ color: 'text.secondary', lineHeight: 1.7, mb: 2 }}>{m.desc}</Typography>
+                  <Chip
+                    label={m.best}
+                    size="small"
+                    sx={{ fontWeight: 600, color: 'primary.main', bgcolor: 'rgba(0, 180, 216, 0.12)' }}
+                  />
+                </Card>
+              </Grid>
             ))}
-          </Box>
-        </Box>
-      </Container>
+          </Grid>
 
-      {/* ==========================================
-          FINAL CTA
-          ========================================== */}
-      <Container maxWidth="lg" sx={{ pb: { xs: 10, md: 14 } }}>
-        <Box
-          sx={{
-            position: 'relative',
-            overflow: 'hidden',
-            textAlign: 'center',
-            color: 'white',
-            px: { xs: 3, md: 8 },
-            py: { xs: 7, md: 10 },
-            borderRadius: '28px',
-            background: 'linear-gradient(135deg, #0A192F 0%, #0F3057 55%, #00B4D8 130%)',
-            boxShadow: '0 30px 70px rgba(10, 25, 47, 0.35)',
-          }}
-        >
+          {/* Tech stack strip */}
+          <Box sx={{ mt: 8, textAlign: 'center' }}>
+            <Typography variant="subtitle2" sx={{ color: 'text.secondary', fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', mb: 2 }}>
+              Powered by modern technology
+            </Typography>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.25, justifyContent: 'center' }}>
+              {stackFor.map((t) => (
+                <Chip
+                  key={t}
+                  label={t}
+                  sx={{
+                    fontWeight: 600,
+                    color: 'text.primary',
+                    bgcolor: 'background.paper',
+                    border: '1px solid',
+                    borderColor: 'divider',
+                  }}
+                />
+              ))}
+            </Box>
+          </Box>
+        </Container>
+      </Box>
+
+      {/* FINAL CTA */}
+      <Box component="section" sx={{ pb: { xs: 10, md: 14 } }}>
+        <Container maxWidth="lg">
           <Box
             sx={{
-              position: 'absolute',
-              bottom: -140,
-              right: -80,
-              width: 420,
-              height: 420,
-              borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(247,127,0,0.4), transparent 65%)',
+              position: 'relative',
+              overflow: 'hidden',
+              textAlign: 'center',
+              color: 'common.white',
+              px: { xs: 3, md: 8 },
+              py: { xs: 7, md: 10 },
+              borderRadius: '28px',
+              background: 'linear-gradient(135deg, #0A192F 0%, #0F3057 55%, #00B4D8 130%)',
+              boxShadow: 6,
             }}
-          />
-          <Box sx={{ position: 'relative' }}>
-            <Typography
-              variant="h3"
-              component="h2"
-              sx={{ fontWeight: 800, mb: 2, letterSpacing: '-0.02em', fontSize: { xs: '1.9rem', md: '2.6rem' } }}
-            >
-              Not Sure Which Solution Fits?
-            </Typography>
-            <Typography sx={{ color: 'grey.300', maxWidth: 560, mx: 'auto', mb: 4.5, fontSize: '1.1rem', lineHeight: 1.7 }}>
-              Tell us what you are trying to achieve. We will recommend the right approach, with no obligation.
-            </Typography>
-            <Button
-              variant="contained"
-              color="warning"
-              size="large"
-              component={Link}
-              href="/contact"
-              endIcon={<ArrowForwardIcon />}
+          >
+            <Box
               sx={{
-                px: 5,
-                py: 1.6,
-                fontWeight: 700,
-                borderRadius: '999px',
-                textTransform: 'none',
-                color: 'white',
-                boxShadow: '0 12px 30px rgba(247, 127, 0, 0.45)',
-                transition: 'all 0.3s ease',
-                '&:hover': { bgcolor: '#d96c00', transform: 'translateY(-3px)' },
+                position: 'absolute',
+                bottom: -140,
+                right: -80,
+                width: 420,
+                height: 420,
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(247,127,0,0.4), transparent 65%)',
               }}
-            >
-              Let&apos;s Talk
-            </Button>
+            />
+            <Box sx={{ position: 'relative' }}>
+              <Typography
+                variant="h3"
+                component="h2"
+                sx={{ fontWeight: 800, mb: 2, letterSpacing: '-0.02em', fontSize: { xs: '1.9rem', md: '2.6rem' } }}
+              >
+                Not Sure Which Solution Fits?
+              </Typography>
+              <Typography sx={{ color: 'grey.200', maxWidth: 560, mx: 'auto', mb: 4.5, fontSize: '1.1rem', lineHeight: 1.7 }}>
+                Tell us what you are trying to achieve. We will recommend the right approach, with no obligation.
+              </Typography>
+              <Button
+                variant="contained"
+                color="warning"
+                size="large"
+                component={Link}
+                href="/contact"
+                endIcon={<ArrowForwardIcon />}
+                sx={{
+                  px: 5,
+                  py: 1.6,
+                  fontWeight: 700,
+                  borderRadius: '999px',
+                  textTransform: 'none',
+                  color: 'common.white',
+                  boxShadow: '0 12px 30px rgba(247, 127, 0, 0.45)',
+                  transition: 'all 0.3s ease',
+                  '&:hover': { bgcolor: '#d96c00', transform: 'translateY(-3px)' },
+                }}
+              >
+                Let&apos;s Talk
+              </Button>
+            </Box>
           </Box>
-        </Box>
-      </Container>
+        </Container>
+      </Box>
     </Box>
   );
 }
