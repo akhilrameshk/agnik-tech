@@ -6,14 +6,12 @@ import { CONTACT, COMPANY } from './siteConfig';
    ------------------------------------------------------------------ */
 
 // Your live address. It can be overridden with NEXT_PUBLIC_SITE_URL in .env.local
-// (see COMPANY.website in siteConfig.ts)
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || `https://${COMPANY.website}`).replace(/\/$/, '');
 export const SITE_NAME = 'Agnik Tech Solutions';
 export const TAGLINE = 'Innovate. Create. Secure.';
 
 export const DEFAULT_DESCRIPTION =
-  'Agnik Tech Solutions designs and builds high-performance web applications and scalable full-stack software that is fast, secure and ready to grow. Innovate. Create. Secure.';
-
+  'Agnik Tech Solutions is a software development company specializing in custom full-stack web apps, Next.js engineering, and scalable digital solutions.';
 export const OG_IMAGE = {
   url: '/og-image.png', // file lives in /public/og-image.png
   width: 1200,
@@ -31,16 +29,27 @@ export const rootMetadata: Metadata = {
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
   keywords: [
+    // Primary High-Volume Commercial Keywords
     'software development company',
-    'web development',
-    'custom web applications',
-    'full-stack development',
-    'Next.js development',
-    'React development',
-    'Node.js development',
-    'API development',
-    'cloud and DevOps',
+    'custom software development services',
+    'full-stack development agency',
+    
+    // Tech Stack & Engineering Keywords
+    'Next.js development company',
+    'React JS development agency',
+    'Node.js backend development',
+    'full stack web application development',
+    'API development services',
+    
+    // Brand & Regional Authority Keywords
     'Agnik Tech Solutions',
+    'software development company in Kerala',
+    'web development agency India',
+    
+    // Solution-Oriented Keywords
+    'cloud and DevOps solutions',
+    'enterprise web application development',
+    'modern UI UX web engineering'
   ],
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
@@ -73,8 +82,15 @@ export const rootMetadata: Metadata = {
     },
   },
   formatDetection: { telephone: false },
-  // Paste your code from Google Search Console here when you have it:
-  // verification: { google: 'your-verification-code' },
+  // Google Search Console Verification Token Activated
+  verification: {
+    google: 'mqB979sv_k8_-NXfTwPx5qHCzzeNiY8s0xGJqNnngjM',
+  },
+  appleWebApp: {
+    capable: true,
+    title: SITE_NAME,
+    statusBarStyle: 'black-translucent',
+  },
 };
 
 export const rootViewport: Viewport = {
@@ -128,13 +144,15 @@ export const organizationJsonLd = {
       logo: `${SITE_URL}/icon.png`,
       slogan: TAGLINE,
       description: DEFAULT_DESCRIPTION,
-      // TODO: add your social profiles below (email comes from siteConfig.ts)
       contactPoint: {
         '@type': 'ContactPoint',
         email: CONTACT.email,
         contactType: 'customer support',
       },
-      // sameAs: ['https://www.linkedin.com/company/your-company', 'https://github.com/your-org'],
+      sameAs: [
+        'https://github.com/akhilrameshk',
+        'https://portfolio.akhilrameshk.vercel.app/'
+      ],
     },
     {
       '@type': 'WebSite',

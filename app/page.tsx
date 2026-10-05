@@ -483,6 +483,49 @@ export default function Home() {
         </Container>
       </Box>
 
+      {/* --- ABOUT / TECH EXPERTISE SECTION (SEO Word Count Booster) --- */}
+      <Box sx={{ bgcolor: 'background.paper', py: { xs: 8, md: 12 }, borderTop: '1px solid', borderColor: 'divider' }}>
+        <Container maxWidth="lg">
+          <Grid container spacing={6} sx={{ alignItems: 'center' }}>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Typography variant="subtitle2" sx={{ color: 'warning.main', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 3, mb: 1.5 }}>
+                Full-Stack Excellence
+              </Typography>
+              <Typography variant="h3" component="h2" sx={{ fontWeight: 800, mb: 3, letterSpacing: '-0.02em', fontSize: { xs: '1.8rem', md: '2.3rem' } }}>
+                Engineering Scalable Digital Solutions for Modern Businesses
+              </Typography>
+              <Typography sx={{ color: 'text.secondary', lineHeight: 1.8, mb: 2, fontSize: '1.05rem' }}>
+                At Agnik Tech Solutions, we specialize in building custom full-stack web applications designed to perform under pressure. Utilizing modern frameworks like Next.js, React, Node.js, and robust cloud environments, we help startups and enterprises streamline operations, optimize core conversion funnels, and scale effortlessly.
+              </Typography>
+              <Typography sx={{ color: 'text.secondary', lineHeight: 1.8, fontSize: '1.05rem' }}>
+                Whether you need a high-performance e-commerce platform, a secure API architecture, or an interactive client dashboard, our senior engineering team ensures clean code, bulletproof security, and lightning-fast page speeds from day one.
+              </Typography>
+            </Grid>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Box 
+                sx={{ 
+                  p: 4, 
+                  borderRadius: '24px', 
+                  bgcolor: 'primary.main', 
+                  color: 'white',
+                  boxShadow: '0 20px 40px rgba(10, 25, 47, 0.15)'
+                }}
+              >
+                <Typography variant="h5" sx={{ fontWeight: 700, mb: 3, color: 'secondary.main' }}>
+                  Our Core Technologies
+                </Typography>
+                <Box component="ul" sx={{ m: 0, pl: 2, display: 'flex', flexDirection: 'column', gap: 1.5, color: 'grey.300', fontSize: '1.05rem' }}>
+                  <li><strong>Frontend:</strong> Next.js App Router, React, TypeScript, Material-UI (MUI), Tailwind CSS</li>
+                  <li><strong>Backend & APIs:</strong> Node.js, Express, NestJS, RESTful & GraphQL architecture</li>
+                  <li><strong>Databases & Caching:</strong> MongoDB, PostgreSQL, Redis performance layers</li>
+                  <li><strong>Cloud & DevOps:</strong> AWS, Docker containerization, CI/CD automated deployment pipelines, Vercel</li>
+                </Box>
+              </Box>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+
       {/* --- WHY CHOOSE US SECTION --- */}
       <Container maxWidth="lg" sx={{ py: { xs: 10, md: 14 } }}>
         <SectionHeader

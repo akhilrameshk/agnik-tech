@@ -21,23 +21,19 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
-// Main navigation. Each path needs a matching page: app/<path>/page.tsx
 const navLinks = [
-  // { title: 'Home', path: '/' },
-   { title: 'Services', path: '/services' },
+  { title: 'Services', path: '/services' },
   { title: 'Solutions', path: '/solutions' },
   { title: 'Our Work', path: '/portfolio' },
   { title: 'About Us', path: '/about' },
 ];
 
-// Highlighted call-to-action button (replaces the plain "Contact Us" link)
 const ctaLink = { title: "Let's Talk", path: '/contact' };
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const pathname = usePathname();
-  // 'lg' so the wider logo + 6 links + button never feel crowded on tablets
   const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
   const handleDrawerToggle = () => setMobileOpen((prev) => !prev);
@@ -49,10 +45,11 @@ export default function Header() {
     <>
       <AppBar position="sticky" sx={{ boxShadow: 2 }}>
         <Toolbar sx={{ justifyContent: 'space-between', py: 1, px: { xs: 2, md: 4 } }}>
-          {/* Left Side: Logo */}
+          {/* Left Side: Logo with aria-label */}
           <Box
             component={Link}
             href="/"
+            aria-label="Agnik Tech Solutions Home"
             sx={{
               display: 'flex',
               alignItems: 'center',
@@ -144,7 +141,13 @@ export default function Header() {
           </IconButton>
         </Box>
 
-        <Box sx={{ px: 3, pb: 2, display: 'flex', justifyContent: 'center' }}>
+        <Box
+          component={Link}
+          href="/"
+          aria-label="Agnik Tech Solutions Home"
+          onClick={handleDrawerToggle}
+          sx={{ px: 3, pb: 2, display: 'flex', justifyContent: 'center', textDecoration: 'none' }}
+        >
           <Box sx={{ position: 'relative', width: '230px', height: '43px' }}>
             <Image
               src="/agnik-logo-horizontal.svg"
