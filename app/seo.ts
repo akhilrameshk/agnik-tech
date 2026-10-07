@@ -11,7 +11,7 @@ export const SITE_NAME = 'Agnik Tech Solutions';
 export const TAGLINE = 'Innovate. Create. Secure.';
 
 export const DEFAULT_DESCRIPTION =
-  'Agnik Tech Solutions is a software development company specializing in custom full-stack web apps, Next.js engineering, and scalable digital solutions.';
+  'Agnik Tech Solutions (Agnik) is a premier software development company in Alappuzha, Kerala, specializing in custom full-stack web apps, Next.js engineering, and scalable digital solutions.';
 export const OG_IMAGE = {
   url: '/og-image.png', // file lives in /public/og-image.png
   width: 1200,
@@ -23,12 +23,23 @@ export const OG_IMAGE = {
 export const rootMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} | Next-Gen Software & Web Engineering`,
+    default: `Agnik | ${SITE_NAME} - Next-Gen Software & Web Engineering`,
     template: `%s | ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
   keywords: [
+    // Short Brand Keywords (Critical for ranking when searching 'Agnik')
+    'Agnik',
+    'Agnik Tech',
+    'Agnik Software',
+    'Agnik Tech Solutions',
+    
+    // Local Software Company Keywords
+    'software company in Alappuzha',
+    'software development company Kerala',
+    'web development agency Kerala',
+    
     // Primary High-Volume Commercial Keywords
     'software development company',
     'custom software development services',
@@ -39,15 +50,8 @@ export const rootMetadata: Metadata = {
     'React JS development agency',
     'Node.js backend development',
     'full stack web application development',
-    'API development services',
-    
-    // Brand & Regional Authority Keywords
-    'Agnik Tech Solutions',
-    'software development company in Kerala',
-    'web development agency India',
     
     // Solution-Oriented Keywords
-    'cloud and DevOps solutions',
     'enterprise web application development',
     'modern UI UX web engineering'
   ],
@@ -58,7 +62,7 @@ export const rootMetadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: SITE_NAME,
-    title: `${SITE_NAME} | Next-Gen Software & Web Engineering`,
+    title: `Agnik | ${SITE_NAME} - Next-Gen Software & Web Engineering`,
     description: DEFAULT_DESCRIPTION,
     url: '/',
     locale: 'en_US',
@@ -66,7 +70,7 @@ export const rootMetadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE_NAME} | Next-Gen Software & Web Engineering`,
+    title: `Agnik | ${SITE_NAME} - Next-Gen Software & Web Engineering`,
     description: DEFAULT_DESCRIPTION,
     images: [OG_IMAGE.url],
   },
@@ -132,18 +136,25 @@ export function pageMetadata({
   };
 }
 
-/* Structured data (JSON-LD) so Google understands who you are */
+/* Structured data (JSON-LD) updated for Local SEO & Brand Authority */
 export const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Organization',
+      '@type': 'SoftwareCompany',
       '@id': `${SITE_URL}/#organization`,
       name: SITE_NAME,
+      alternateName: ['Agnik', 'Agnik Tech'],
       url: SITE_URL,
       logo: `${SITE_URL}/icon.png`,
       slogan: TAGLINE,
       description: DEFAULT_DESCRIPTION,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Alappuzha',
+        addressRegion: 'Kerala',
+        addressCountry: 'IN',
+      },
       contactPoint: {
         '@type': 'ContactPoint',
         email: CONTACT.email,
