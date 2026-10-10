@@ -39,6 +39,7 @@ export const rootMetadata: Metadata = {
     'software company in Alappuzha',
     'software development company Kerala',
     'web development agency Kerala',
+    'software company near me',
     
     // Primary High-Volume Commercial Keywords
     'software development company',
@@ -144,21 +145,31 @@ export const organizationJsonLd = {
       '@type': 'SoftwareCompany',
       '@id': `${SITE_URL}/#organization`,
       name: SITE_NAME,
-      alternateName: ['Agnik', 'Agnik Tech'],
+      alternateName: ['Agnik', 'Agnik Tech', 'Agnik Tech Solutions Alappuzha'],
       url: SITE_URL,
       logo: `${SITE_URL}/icon.png`,
       slogan: TAGLINE,
       description: DEFAULT_DESCRIPTION,
       address: {
         '@type': 'PostalAddress',
+        streetAddress: 'Stadium Ward, Opposite Alleppey Gym',
         addressLocality: 'Alappuzha',
         addressRegion: 'Kerala',
+        postalCode: '688001',
         addressCountry: 'IN',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: '9.4981',
+        longitude: '76.3388',
       },
       contactPoint: {
         '@type': 'ContactPoint',
+        telephone: CONTACT.phone,
         email: CONTACT.email,
         contactType: 'customer support',
+        areaServed: 'IN',
+        availableLanguage: ['English', 'Malayalam'],
       },
       sameAs: [
         'https://github.com/akhilrameshk',

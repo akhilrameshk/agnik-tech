@@ -17,17 +17,17 @@ import { keyframes } from '@mui/material/styles';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import RocketLaunchOutlinedIcon from '@mui/icons-material/RocketLaunchOutlined';
 
-// TODO: replace with your real contact details (keep in sync with the footer)
 const CONTACT = {
   email: 'info@agniktech.com',
   phone: '+91 9633134324',
-  // WhatsApp number in international format: country code + number, digits only (no +, spaces or dashes)
   whatsapp: '+919633134324',
+  address: 'Opposite Alleppey Gym, Stadium Ward, Alappuzha, Kerala - 688001',
 };
 
 const fadeUp = keyframes`
@@ -133,6 +133,13 @@ export default function ContactPage() {
 
   const infoCards = [
     {
+      title: 'Our Location',
+      value: CONTACT.address,
+      href: 'https://maps.google.com/?q=Stadium+Ward+Alappuzha',
+      icon: <LocationOnOutlinedIcon />,
+      color: '#E63946',
+    },
+    {
       title: 'Chat on WhatsApp',
       value: CONTACT.phone,
       href: `https://wa.me/${CONTACT.whatsapp}`,
@@ -157,9 +164,7 @@ export default function ContactPage() {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'background.default' }}>
-      {/* ==========================================
-          PAGE HERO
-          ========================================== */}
+      {/* PAGE HERO */}
       <Box
         component="section"
         sx={{
@@ -183,31 +188,6 @@ export default function ContactPage() {
             WebkitMaskImage: 'radial-gradient(ellipse at center, black 30%, transparent 75%)',
           }}
         />
-        <Box
-          sx={{
-            position: 'absolute',
-            top: -140,
-            left: -100,
-            width: 460,
-            height: 460,
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(0,180,216,0.35), transparent 65%)',
-            animation: `${pulseGlow} 7s ease-in-out infinite`,
-          }}
-        />
-        <Box
-          sx={{
-            position: 'absolute',
-            bottom: -170,
-            right: -90,
-            width: 480,
-            height: 480,
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(247,127,0,0.28), transparent 65%)',
-            animation: `${pulseGlow} 9s ease-in-out infinite`,
-          }}
-        />
-
         <Container maxWidth="md" sx={{ position: 'relative', zIndex: 2, animation: `${fadeUp} 0.8s ease both` }}>
           <Box
             sx={{
@@ -253,17 +233,14 @@ export default function ContactPage() {
           </Typography>
 
           <Typography sx={{ color: 'grey.300', maxWidth: 620, mx: 'auto', fontSize: '1.15rem', lineHeight: 1.75 }}>
-            Have a project in mind or just want to ask a question? Message us on WhatsApp and we will get back to you as
-            soon as possible.
+            Have a project in mind or want to visit us in Alappuzha? Get in touch and let&apos;s discuss how we can help.
           </Typography>
         </Container>
       </Box>
 
-      {/* ==========================================
-          FORM + INFO
-          ========================================== */}
+      {/* FORM + INFO */}
       <Container maxWidth="lg" sx={{ mt: { xs: -10, md: -12 }, pb: { xs: 10, md: 14 }, position: 'relative', zIndex: 3 }}>
-        <Grid container spacing={3} >
+        <Grid container spacing={3}>
           {/* Form */}
           <Grid size={{ xs: 12, md: 7 }}>
             <Card
@@ -286,8 +263,7 @@ export default function ContactPage() {
 
               {status === 'opened' && (
                 <Alert severity="success" sx={{ mb: 3, borderRadius: '12px' }} onClose={() => setStatus('idle')}>
-                  WhatsApp should now be open with your message. Just press send to deliver it to us. If nothing
-                  opened, please allow pop-ups or message us directly on {CONTACT.phone}.
+                  WhatsApp should now be open with your message. Just press send to deliver it to us.
                 </Alert>
               )}
 
@@ -431,6 +407,8 @@ export default function ContactPage() {
                     <Typography sx={{ fontWeight: 800, color: 'primary.main' }}>{c.title}</Typography>
                     <MuiLink
                       href={c.href}
+                      target={c.title === 'Our Location' ? '_blank' : '_self'}
+                      rel="noopener noreferrer"
                       underline="hover"
                       sx={{ color: 'text.secondary', wordBreak: 'break-word', '&:hover': { color: 'secondary.main' } }}
                     >
@@ -439,123 +417,10 @@ export default function ContactPage() {
                   </Box>
                 </Card>
               ))}
-
-              {/* Dark note card */}
-              <Card
-                sx={{
-                  flexGrow: 1,
-                  p: 4,
-                  borderRadius: '22px',
-                  color: 'white',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  background: 'linear-gradient(135deg, #0A192F 0%, #0F3057 60%, #00B4D8 150%)',
-                  boxShadow: '0 20px 50px rgba(10, 25, 47, 0.25)',
-                }}
-              >
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    bottom: -90,
-                    right: -70,
-                    width: 260,
-                    height: 260,
-                    borderRadius: '50%',
-                    background: 'radial-gradient(circle, rgba(247,127,0,0.4), transparent 65%)',
-                  }}
-                />
-                <Box sx={{ position: 'relative' }}>
-                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-                                 
-                  <WhatshotIcon sx={{ color: 'warning.main', fontSize: 40, mb: 1.5 }} />
-                  <Typography variant="h6" sx={{ fontWeight: 800, mb: 1 }}>
-                    Innovate. Create. Secure.
-                  </Typography>
-                  </Box>
-                  <Typography sx={{ color: 'grey.300', lineHeight: 1.75 }}>
-                    Every message is read by our team. Tell us as much as you can about your idea and we will help
-                    you find the best way to bring it to life.
-                  </Typography>
-                </Box>
-              </Card>
             </Stack>
           </Grid>
         </Grid>
       </Container>
-
-      {/* ==========================================
-          WHAT HAPPENS NEXT
-          ========================================== */}
-      <Box sx={{ bgcolor: 'primary.main', color: 'white', py: { xs: 10, md: 14 }, position: 'relative', overflow: 'hidden' }}>
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '-30%',
-            right: '-10%',
-            width: 500,
-            height: 500,
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(0,180,216,0.18), transparent 65%)',
-          }}
-        />
-        <Container maxWidth="lg" sx={{ position: 'relative' }}>
-          <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 }, maxWidth: 680, mx: 'auto' }}>
-            <Typography
-              variant="subtitle2"
-              sx={{ color: 'warning.main', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 3, mb: 1.5 }}
-            >
-              What Happens Next
-            </Typography>
-            <Typography
-              variant="h3"
-              component="h2"
-              sx={{ fontWeight: 800, letterSpacing: '-0.02em', fontSize: { xs: '1.9rem', md: '2.6rem' } }}
-            >
-              A Simple Path From Hello to Launch
-            </Typography>
-          </Box>
-
-          <Grid container spacing={3}>
-            {steps.map((s) => (
-              <Grid key={s.no} size={{ xs: 12, md: 4 }}>
-                <Box
-                  sx={{
-                    height: '100%',
-                    p: 3.5,
-                    borderRadius: '20px',
-                    bgcolor: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    transition: 'all 0.3s ease',
-                    '&:hover': { bgcolor: 'rgba(255,255,255,0.08)', borderColor: 'rgba(247,127,0,0.6)', transform: 'translateY(-6px)' },
-                  }}
-                >
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                    <Box sx={{ color: 'warning.main', '& svg': { fontSize: 38 } }}>{s.icon}</Box>
-                    <Typography
-                      sx={{
-                        fontSize: '2.4rem',
-                        fontWeight: 800,
-                        lineHeight: 1,
-                        background: 'linear-gradient(90deg, #00B4D8, #F77F00)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                      }}
-                    >
-                      {s.no}
-                    </Typography>
-                  </Box>
-                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
-                    {s.title}
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: 'grey.400', lineHeight: 1.7 }}>
-                    {s.desc}
-                  </Typography>
-                </Box>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
     </Box>
   );
 }

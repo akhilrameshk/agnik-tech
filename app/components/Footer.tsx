@@ -2,14 +2,15 @@
 import { Box, Container, Grid, Typography, Link as MuiLink, Divider, Button, Stack } from '@mui/material';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Link from 'next/link';
 import Image from 'next/image';
 
-// TODO: replace these with your real contact details
 const CONTACT = {
   email: 'info@agniktech.com',
   phone: '+91 9633134324',
+  address: 'Opposite Alleppey Gym, Stadium Ward, Alappuzha, Kerala - 688001',
 };
 
 const companyLinks = [
@@ -139,10 +140,16 @@ export default function Footer() {
             </Stack>
           </Grid>
 
-          {/* Column 4: Contact */}
+          {/* Column 4: Contact & Location */}
           <Grid size={{ xs: 12, md: 3 }}>
             <FooterHeading>Get in Touch</FooterHeading>
             <Stack spacing={2}>
+              <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.5 }}>
+                <LocationOnOutlinedIcon sx={{ color: 'secondary.main', mt: 0.3 }} />
+                <Typography variant="body2" sx={{ color: 'grey.400', lineHeight: 1.6 }}>
+                  {CONTACT.address}
+                </Typography>
+              </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
                 <EmailOutlinedIcon sx={{ color: 'secondary.main' }} />
                 <MuiLink href={`mailto:${CONTACT.email}`} underline="none" sx={{ ...linkSx, '&:hover': { color: 'secondary.main' } }}>
