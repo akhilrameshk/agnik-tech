@@ -10,8 +10,11 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || `https://${COMPANY.
 export const SITE_NAME = 'Agnik Tech Solutions';
 export const TAGLINE = 'Innovate. Create. Secure.';
 
+// Keep the title under ~60 characters and the description under ~155 so Google does not cut them off
+export const HOME_TITLE = `${SITE_NAME} | Website Design & Development`;
 export const DEFAULT_DESCRIPTION =
-  'Agnik Tech Solutions (Agnik) is a premier software development company in Alappuzha, Kerala, specializing in custom full-stack web apps, Next.js engineering, and scalable digital solutions.';
+  'Agnik Tech Solutions builds fast, mobile-friendly websites and web apps for shops, hotels, clinics and startups in Kerala and worldwide. Free quote.';
+
 export const OG_IMAGE = {
   url: '/og-image.png', // file lives in /public/og-image.png
   width: 1200,
@@ -23,38 +26,33 @@ export const OG_IMAGE = {
 export const rootMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `Agnik | ${SITE_NAME} - Next-Gen Software & Web Engineering`,
+    default: HOME_TITLE,
     template: `%s | ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
+  // Note: Google ignores the keywords tag. It is kept only for other search engines.
   keywords: [
-    // Short Brand Keywords (Critical for ranking when searching 'Agnik')
-    'Agnik',
-    'Agnik Tech',
-    'Agnik Software',
+    // Brand
     'Agnik Tech Solutions',
-    
-    // Local Software Company Keywords
+    'Agnik Tech',
+    'Agnik',
+
+    // What customers search for
+    'website design company',
+    'website development company',
+    'web design Alappuzha',
+    'website developer Kerala',
+    'business website Kerala',
+    'ecommerce website developer',
+    'hotel and resort website design',
+    'clinic website design',
+
+    // Software
     'software company in Alappuzha',
     'software development company Kerala',
-    'web development agency Kerala',
-    'software company near me',
-    
-    // Primary High-Volume Commercial Keywords
-    'software development company',
-    'custom software development services',
+    'custom web application development',
     'full-stack development agency',
-    
-    // Tech Stack & Engineering Keywords
-    'Next.js development company',
-    'React JS development agency',
-    'Node.js backend development',
-    'full stack web application development',
-    
-    // Solution-Oriented Keywords
-    'enterprise web application development',
-    'modern UI UX web engineering'
   ],
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
@@ -63,15 +61,15 @@ export const rootMetadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: SITE_NAME,
-    title: `Agnik | ${SITE_NAME} - Next-Gen Software & Web Engineering`,
+    title: HOME_TITLE,
     description: DEFAULT_DESCRIPTION,
     url: '/',
-    locale: 'en_US',
+    locale: 'en_IN',
     images: [OG_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `Agnik | ${SITE_NAME} - Next-Gen Software & Web Engineering`,
+    title: HOME_TITLE,
     description: DEFAULT_DESCRIPTION,
     images: [OG_IMAGE.url],
   },
@@ -87,7 +85,7 @@ export const rootMetadata: Metadata = {
     },
   },
   formatDetection: { telephone: false },
-  // Google Search Console Verification Token Activated
+  // Google Search Console verification
   verification: {
     google: 'mqB979sv_k8_-NXfTwPx5qHCzzeNiY8s0xGJqNnngjM',
   },
@@ -125,7 +123,7 @@ export function pageMetadata({
       title: fullTitle,
       description,
       url: path,
-      locale: 'en_US',
+      locale: 'en_IN',
       images: [OG_IMAGE],
     },
     twitter: {
@@ -137,19 +135,24 @@ export function pageMetadata({
   };
 }
 
-/* Structured data (JSON-LD) updated for Local SEO & Brand Authority */
+/* Structured data (JSON-LD) for Local SEO and brand authority */
 export const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'SoftwareCompany',
+      // "SoftwareCompany" is not a schema.org type, so Google ignored it.
+      // ProfessionalService is a valid local business type.
+      '@type': 'ProfessionalService',
       '@id': `${SITE_URL}/#organization`,
       name: SITE_NAME,
       alternateName: ['Agnik', 'Agnik Tech', 'Agnik Tech Solutions Alappuzha'],
       url: SITE_URL,
       logo: `${SITE_URL}/icon.png`,
+      image: `${SITE_URL}/og-image.png`,
       slogan: TAGLINE,
       description: DEFAULT_DESCRIPTION,
+      priceRange: '₹3,999+',
+      areaServed: ['India', 'United Arab Emirates', 'Europe', 'United States'],
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Stadium Ward, Opposite Alleppey Gym',
@@ -163,17 +166,19 @@ export const organizationJsonLd = {
         latitude: '9.4981',
         longitude: '76.3388',
       },
+      telephone: CONTACT.phone,
+      email: CONTACT.email,
       contactPoint: {
         '@type': 'ContactPoint',
         telephone: CONTACT.phone,
         email: CONTACT.email,
         contactType: 'customer support',
-        areaServed: 'IN',
+        areaServed: ['IN', 'AE', 'US', 'GB'],
         availableLanguage: ['English', 'Malayalam'],
       },
       sameAs: [
         'https://github.com/akhilrameshk',
-        'https://portfolio.akhilrameshk.vercel.app/'
+        'https://portfolio.akhilrameshk.vercel.app/',
       ],
     },
     {
