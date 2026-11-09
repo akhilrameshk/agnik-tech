@@ -5,18 +5,16 @@ import { CONTACT, COMPANY } from './siteConfig';
    Central SEO settings. Edit the values here and every page updates.
    ------------------------------------------------------------------ */
 
-// Your live address. It can be overridden with NEXT_PUBLIC_SITE_URL in .env.local
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || `https://${COMPANY.website}`).replace(/\/$/, '');
 export const SITE_NAME = 'Agnik Tech Solutions';
 export const TAGLINE = 'Innovate. Create. Secure.';
 
-// Keep the title under ~60 characters and the description under ~155 so Google does not cut them off
 export const HOME_TITLE = `${SITE_NAME} | Website Design & Development`;
 export const DEFAULT_DESCRIPTION =
   'Agnik Tech Solutions builds fast, mobile-friendly websites and web apps for shops, hotels, clinics and startups in Kerala and worldwide. Free quote.';
 
 export const OG_IMAGE = {
-  url: '/og-image.png', // file lives in /public/og-image.png
+  url: `${SITE_URL}/og-image.png`,
   width: 1200,
   height: 630,
   alt: 'Agnik Tech Solutions - Innovate. Create. Secure.',
@@ -31,14 +29,10 @@ export const rootMetadata: Metadata = {
   },
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
-  // Note: Google ignores the keywords tag. It is kept only for other search engines.
   keywords: [
-    // Brand
     'Agnik Tech Solutions',
     'Agnik Tech',
     'Agnik',
-
-    // What customers search for
     'website design company',
     'website development company',
     'web design Alappuzha',
@@ -47,8 +41,6 @@ export const rootMetadata: Metadata = {
     'ecommerce website developer',
     'hotel and resort website design',
     'clinic website design',
-
-    // Software
     'software company in Alappuzha',
     'software development company Kerala',
     'custom web application development',
@@ -63,7 +55,7 @@ export const rootMetadata: Metadata = {
     siteName: SITE_NAME,
     title: HOME_TITLE,
     description: DEFAULT_DESCRIPTION,
-    url: '/',
+    url: SITE_URL,
     locale: 'en_IN',
     images: [OG_IMAGE],
   },
@@ -85,7 +77,6 @@ export const rootMetadata: Metadata = {
     },
   },
   formatDetection: { telephone: false },
-  // Google Search Console verification
   verification: {
     google: 'mqB979sv_k8_-NXfTwPx5qHCzzeNiY8s0xGJqNnngjM',
   },
@@ -108,11 +99,13 @@ export function pageMetadata({
   description,
   path,
 }: {
-  title: string; // the " | Agnik Tech Solutions" part is added automatically
+  title: string;
   description: string;
-  path: string; // e.g. '/services'
+  path: string;
 }): Metadata {
+  const pageUrl = `${SITE_URL}${path}`;
   const fullTitle = `${title} | ${SITE_NAME}`;
+
   return {
     title,
     description,
@@ -122,7 +115,7 @@ export function pageMetadata({
       siteName: SITE_NAME,
       title: fullTitle,
       description,
-      url: path,
+      url: pageUrl,
       locale: 'en_IN',
       images: [OG_IMAGE],
     },
@@ -140,8 +133,6 @@ export const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      // "SoftwareCompany" is not a schema.org type, so Google ignored it.
-      // ProfessionalService is a valid local business type.
       '@type': 'ProfessionalService',
       '@id': `${SITE_URL}/#organization`,
       name: SITE_NAME,

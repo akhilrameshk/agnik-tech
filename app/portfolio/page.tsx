@@ -7,11 +7,10 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
-import SportsCricketOutlinedIcon from '@mui/icons-material/SportsCricketOutlined';
-import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import DirectionsBoatOutlinedIcon from '@mui/icons-material/DirectionsBoatOutlined';
-import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import EventAvailableOutlinedIcon from '@mui/icons-material/EventAvailableOutlined';
+import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 
 const fadeUp = keyframes`
@@ -37,71 +36,57 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: 'Kayal Vista',
+    title: 'Alleppey Mermaid Houseboats',
     category: 'Travel & Booking',
-    desc: 'A booking website for rooms and houseboats in Alappuzha, helping travellers find and reserve the perfect backwater stay.',
+    desc: 'An immersive booking platform for luxury houseboats in Alappuzha, offering seamless backwater cruise reservations.',
     points: [
-      'Rooms and houseboats in one place',
-      'Booking-focused experience for travellers',
-      'Mobile-friendly for on-the-go planning',
+      'Interactive houseboat cruise packages',
+      'Direct booking and inquiry system',
+      'Mobile-friendly and fast backwater experience',
     ],
-    tags: ['Booking', 'Tourism', 'Web App'],
+    tags: ['Tourism', 'Booking', 'Next.js'],
     icon: <DirectionsBoatOutlinedIcon />,
     gradient: 'linear-gradient(135deg, #0A192F 0%, #0B4F6C 60%, #00B4D8 150%)',
-    liveUrl: 'https://kayalvista.in',
+    liveUrl: 'https://houseboat-oggkyn0b7-akhilrameshk.vercel.app/',
   },
   {
-    title: 'Cricksy',
-    category: 'Sports & News',
-    desc: 'A cricket hub that lists local and international matches alongside the latest cricket news, all in one fast, easy-to-read place.',
+    title: 'Daffodils Inn',
+    category: 'Hospitality',
+    desc: 'A charming homestay website designed to showcase rooms, amenities, and local experiences for travellers.',
     points: [
-      'Local and international match listings',
-      'Latest cricket news and updates',
-      'Quick, clean browsing on any device',
+      'Clean room gallery and accommodation details',
+      'Easy visitor contact and location guide',
+      'Warm, welcoming, mobile-first design',
     ],
-    tags: ['Sports', 'News', 'Web App'],
-    icon: <SportsCricketOutlinedIcon />,
-    gradient: 'linear-gradient(135deg, #0A192F 0%, #14532D 60%, #22C55E 160%)',
-    liveUrl: '',
-  },
-  {
-    title: 'Fluffy Bloom',
-    category: 'Shopping',
-    desc: 'An online shop for ladies, designed with a soft, welcoming look that makes browsing and choosing products a pleasure.',
-    points: [
-      'Attractive product showcase',
-      'Simple, friendly shopping experience',
-      'Responsive design for phone shoppers',
-    ],
-    tags: ['E-commerce', 'Retail', 'Web App'],
-    icon: <ShoppingBagOutlinedIcon />,
+    tags: ['Hospitality', 'Homestay', 'Business Site'],
+    icon: <HomeOutlinedIcon />,
     gradient: 'linear-gradient(135deg, #0A192F 0%, #7A1F4B 60%, #F472B6 160%)',
-    liveUrl: '',
+    liveUrl: 'https://daffodils-inn.vercel.app/',
   },
   {
-    title: 'Optical Shop',
-    category: 'Shopping',
-    desc: 'A website for an optical shop, presenting eyewear and services clearly so customers can explore options and get in touch easily.',
+    title: 'Elegant Events',
+    category: 'Event Management',
+    desc: 'A professional event management platform highlighting wedding planning, corporate gatherings, and celebration setups.',
     points: [
-      'Clear showcase of eyewear and services',
-      'Easy contact and shop information',
-      'Clean, trustworthy, mobile-first design',
+      'Service portfolio and gallery showcase',
+      'Event booking and consultation requests',
+      'Sleek, modern UI with smooth animations',
     ],
-    tags: ['Business Website', 'Retail', 'Web App'],
-    icon: <VisibilityOutlinedIcon />,
+    tags: ['Events', 'Management', 'Web App'],
+    icon: <EventAvailableOutlinedIcon />,
     gradient: 'linear-gradient(135deg, #0A192F 0%, #3B2A80 60%, #818CF8 160%)',
-    liveUrl: '',
+    liveUrl: 'https://event-management-git-main-akhilrameshk.vercel.app/',
   },
   {
     title: 'Personal Portfolio',
     category: 'Portfolio',
-    desc: 'A personal portfolio website that presents skills, experience and projects in a polished, fast-loading and professional way.',
+    desc: 'A professional developer portfolio showcasing full-stack expertise, technical skills, and production-ready projects.',
     points: [
-      'Personal brand and project showcase',
-      'Fast-loading, responsive layout',
-      'Clean design that puts the work first',
+      'Detailed professional background & skills',
+      'Lightning-fast performance and clean UI',
+      'Direct contact and project links',
     ],
-    tags: ['Portfolio', 'Personal Brand', 'Web App'],
+    tags: ['Portfolio', 'Developer', 'Personal Brand'],
     icon: <PersonOutlinedIcon />,
     gradient: 'linear-gradient(135deg, #0A192F 0%, #0F3057 55%, #F77F00 170%)',
     liveUrl: 'https://portfolio.akhilrameshk.vercel.app/',
@@ -139,9 +124,8 @@ export default function PortfolioPage() {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'background.default' }}>
-      {/* ==========================================
-          PAGE HERO
-          ========================================== */}
+      
+      {/* --- PAGE HERO --- */}
       <Box
         component="section"
         sx={{
@@ -181,7 +165,7 @@ export default function PortfolioPage() {
           sx={{
             position: 'absolute',
             bottom: -170,
-            right: -90,
+            left: -90,
             width: 480,
             height: 480,
             borderRadius: '50%',
@@ -235,20 +219,17 @@ export default function PortfolioPage() {
           </Typography>
 
           <Typography sx={{ color: 'grey.200', maxWidth: 640, mx: 'auto', fontSize: '1.15rem', lineHeight: 1.75 }}>
-            From travel bookings and sports news to online shops and personal brands, here is a look at what we
-            have built.
+            Explore our live web applications, houseboat bookings, homestays, and event platforms engineered for performance and real business results.
           </Typography>
         </Container>
       </Box>
 
-      {/* ==========================================
-          PROJECTS
-          ========================================== */}
+      {/* --- PROJECTS SECTION --- */}
       <Container maxWidth="lg" sx={{ py: { xs: 10, md: 14 } }}>
         <SectionHeading
           eyebrow="Featured Projects"
           title="Real Products, Real Purpose"
-          subtitle="Each project started with a simple idea and a clear goal for the people who would use it."
+          subtitle="Click to view live deployments of our recent client and professional builds."
         />
 
         {/* Filter chips */}
@@ -266,11 +247,17 @@ export default function PortfolioPage() {
                   py: 2.25,
                   fontWeight: 700,
                   fontSize: '0.9rem',
-                  color: selected ? 'primary.contrastText' : 'primary.contrastText',
-                  bgcolor: selected ? 'primary.main' : (theme) => (theme.palette.mode === 'dark' ? 'rgba(0, 180, 216, 0.2)' : 'rgba(0, 180, 216, 0.1)'),
+                  color: selected
+                    ? 'primary.contrastText'
+                    : (theme) => (theme.palette.mode === 'dark' ? 'common.white' : 'text.primary'),
+                  bgcolor: selected
+                    ? 'primary.main'
+                    : (theme) => (theme.palette.mode === 'dark' ? 'rgba(0, 180, 216, 0.2)' : 'rgba(0, 180, 216, 0.12)'),
                   border: '1px solid',
                   borderColor: selected ? 'primary.main' : 'rgba(0, 180, 216, 0.35)',
-                  '&:hover': { bgcolor: selected ? 'primary.main' : 'rgba(0, 180, 216, 0.25)' },
+                  '&:hover': {
+                    bgcolor: selected ? 'primary.main' : 'rgba(0, 180, 216, 0.25)',
+                  },
                 }}
               />
             );
@@ -308,15 +295,6 @@ export default function PortfolioPage() {
                     overflow: 'hidden',
                   }}
                 >
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      inset: 0,
-                      backgroundImage:
-                        'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)',
-                      backgroundSize: '28px 28px',
-                    }}
-                  />
                   <Chip
                     label={p.category}
                     size="small"
@@ -389,7 +367,7 @@ export default function PortfolioPage() {
                     ))}
                   </Box>
 
-                  {p.liveUrl ? (
+                  {p.liveUrl && (
                     <Button
                       href={p.liveUrl}
                       target="_blank"
@@ -398,15 +376,6 @@ export default function PortfolioPage() {
                       sx={{ mt: 'auto', alignSelf: 'flex-start', p: 0, fontWeight: 700, textTransform: 'none', color: 'primary.main' }}
                     >
                       View live site
-                    </Button>
-                  ) : (
-                    <Button
-                      component={Link}
-                      href="/contact"
-                      endIcon={<ArrowForwardIcon />}
-                      sx={{ mt: 'auto', alignSelf: 'flex-start', p: 0, fontWeight: 700, textTransform: 'none', color: 'primary.main' }}
-                    >
-                      Build something similar
                     </Button>
                   )}
                 </Box>
@@ -457,9 +426,7 @@ export default function PortfolioPage() {
         </Grid>
       </Container>
 
-      {/* ==========================================
-          FINAL CTA
-          ========================================== */}
+      {/* --- FINAL CTA --- */}
       <Container maxWidth="lg" sx={{ pb: { xs: 10, md: 14 } }}>
         <Box
           sx={{

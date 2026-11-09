@@ -1,14 +1,12 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { pageMetadata } from '../seo';
 
-export const metadata: Metadata = pageMetadata({
-  title: 'Our Work: Websites & Web Apps',
-  description:
-    'See websites and web apps built by Agnik Tech Solutions: a houseboat booking site, a cricket news hub, online shops and more.',
-  path: '/portfolio',
-});
+export const metadata: Metadata = {
+  title: 'Our Work & Portfolio | Agnik Tech Solutions',
+  description: 'Explore live web projects built by Agnik Tech Solutions including Alleppey Mermaid Houseboats, Daffodils Inn Homestay, Event Management systems, and custom web apps.',
+  keywords: ['Agnik Tech Portfolio', 'Web Development Projects Kerala', 'Houseboat Booking Website', 'Next.js Developer Alappuzha'],
+};
 
-export default function Layout({ children }: { children: ReactNode }) {
-  return children;
+export default function PortfolioLayout({ children }: { children: ReactNode }) {
+  return <>{children}</>;
 }

@@ -1,10 +1,11 @@
 'use client';
-import { Box, Container, Typography, Button, Grid, Card, Stack } from '@mui/material';
+import { Box, Container, Typography, Button, Grid, Card, Stack, Chip } from '@mui/material';
 import { keyframes } from '@mui/material/styles';
 import Link from 'next/link';
 import HeroShowcase from './components/HeroShowcase';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
 import DesignServicesOutlinedIcon from '@mui/icons-material/DesignServicesOutlined';
 import ShieldOutlinedIcon from '@mui/icons-material/ShieldOutlined';
@@ -30,45 +31,45 @@ const fadeUp = keyframes`
 const PILLARS = [
   {
     title: 'Innovate',
-    desc: 'We turn ideas into forward-thinking products using modern architecture and the right technology for the job.',
+    desc: 'Transforming ideas into scalable web applications using Next.js, modern backend architectures, and modern UI stacks.',
     icon: <LightbulbOutlinedIcon sx={{ fontSize: 32 }} />,
     color: '#F77F00',
   },
   {
     title: 'Create',
-    desc: 'Clean, scalable, beautifully engineered software - from first prototype to production-ready platform.',
+    desc: 'Pixel-perfect responsive design, high-converting web portals, and custom admin dashboards tailored for growth.',
     icon: <DesignServicesOutlinedIcon sx={{ fontSize: 32 }} />,
     color: '#00B4D8',
   },
   {
-    title: 'Secure',
-    desc: 'Security is built in from day one: hardened APIs, safe deployments and reliable infrastructure.',
+    title: 'Secure & Scale',
+    desc: 'Production-ready cloud deployment on Vercel & AWS with built-in security, speed optimization, and SEO indexing.',
     icon: <ShieldOutlinedIcon sx={{ fontSize: 32 }} />,
     color: '#00B4D8',
   },
 ];
 
 const SERVICES = [
-  { title: 'Web Applications', desc: 'Lightning-fast Next.js and React apps with server-side rendering, strong SEO and pixel-perfect responsive design.', icon: <WebIcon /> },
-  { title: 'Full-Stack Software', desc: 'End-to-end products built on Node.js, NestJS and modern databases, engineered for real business workloads.', icon: <CodeIcon /> },
-  { title: 'APIs & Microservices', desc: 'Secure, well-documented APIs and service architectures that scale with your users and integrate with anything.', icon: <HubOutlinedIcon /> },
-  { title: 'Dashboards & Analytics', desc: 'Interactive data dashboards and reporting tools that turn raw numbers into decisions your team can act on.', icon: <InsightsOutlinedIcon /> },
-  { title: 'Cloud & DevOps', desc: 'AWS, Docker and automated CI/CD pipelines for smooth releases, easy scaling and dependable uptime.', icon: <CloudQueueIcon /> },
-  { title: 'Performance & Caching', desc: 'Redis, CDN and ISR strategies that keep pages fast and servers calm, even when traffic spikes.', icon: <SpeedIcon /> },
+  { title: 'Custom Web Applications', desc: 'High-speed Next.js & React apps with server-side rendering, top Core Web Vitals, and strong search visibility.', icon: <WebIcon /> },
+  { title: 'Full-Stack Software', desc: 'End-to-end web products built on Node.js, Express, and MongoDB, engineered for real business workloads.', icon: <CodeIcon /> },
+  { title: 'Business Portals & Admin Panels', desc: 'Secure custom dashboards and content management portals built to streamline operations and dynamic asset tracking.', icon: <HubOutlinedIcon /> },
+  { title: 'SEO & Google Indexing', desc: 'Google Search Console setup, sitemap indexing, and local SEO structure to help your business rank on top.', icon: <InsightsOutlinedIcon /> },
+  { title: 'Cloud Deployment & Vercel CDN', desc: 'Automated deployment pipelines, DNS mapping, and fast SSL setups for reliable global uptime.', icon: <CloudQueueIcon /> },
+  { title: 'Performance Optimization', desc: 'Image compression, caching layer setups, and clean code refactoring that guarantee sub-second load times.', icon: <SpeedIcon /> },
 ];
 
 const STEPS = [
-  { no: '01', title: 'Discover', desc: 'We learn your goals, users and constraints, then define a clear scope.' },
-  { no: '02', title: 'Design', desc: 'Architecture and interface planned together, so nothing is guesswork.' },
-  { no: '03', title: 'Build', desc: 'Agile sprints with regular demos, clean code and automated testing.' },
-  { no: '04', title: 'Launch & Grow', desc: 'Smooth deployment, monitoring and continuous improvement after go-live.' },
+  { no: '01', title: 'Consult & Scope', desc: 'We analyze your business needs and define a budget-friendly, high-impact project roadmap.' },
+  { no: '02', title: 'Architecture & UI', desc: 'Modern Material-UI layout design and structured database planning tailored to your brand.' },
+  { no: '03', title: 'Build & Test', desc: 'Clean, type-safe full-stack development with real-time feedback and mobile-first responsiveness.' },
+  { no: '04', title: 'Deploy & Index', desc: 'Instant Vercel CDN launch, domain configuration, and Google Search Console submission.' },
 ];
 
 const REASONS = [
-  'Senior engineers on every project, not just on the sales call',
-  'Transparent communication and predictable delivery',
-  'Performance and security treated as features, not afterthoughts',
-  'Code you own, documented and ready to grow with your business',
+  'Senior Full-Stack Developers working directly on your codebase',
+  'Transparent, modular starter packages with no hidden monthly fees',
+  'Lightning-fast page loads and zero-compromise SEO optimization',
+  'Complete ownership of source code with 1-year basic technical support',
 ];
 
 /* ---------- Reusable Components ---------- */
@@ -85,7 +86,7 @@ function SectionHeader({
   light?: boolean;
 }) {
   return (
-    <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 }, maxWidth: 720, mx: 'auto' }}>
+    <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 }, maxWidth: 760, mx: 'auto' }}>
       <Typography
         variant="subtitle2"
         sx={{ color: 'warning.main', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 3, mb: 1.5 }}
@@ -288,38 +289,31 @@ export default function Home() {
           <Grid container spacing={{ xs: 6, md: 4 }} sx={{ alignItems: 'center' }}>
             <Grid size={{ xs: 12, md: 7 }}>
               <Box sx={{ animation: `${fadeUp} 0.8s ease both`, textAlign: { xs: 'center', md: 'left' } }}>
-                <Box
-                  sx={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 1,
-                    px: 2,
-                    py: 0.75,
-                    mb: 3,
-                    borderRadius: '50px',
-                    bgcolor: 'rgba(0, 180, 216, 0.1)',
-                    border: '1px solid rgba(0, 180, 216, 0.35)',
-                    color: 'secondary.main',
-                    fontSize: '0.875rem',
-                    fontWeight: 600,
-                    backdropFilter: 'blur(6px)',
-                  }}
-                >
-                  <WhatshotIcon fontSize="small" sx={{ color: 'warning.main' }} />
-                  Fast. Reliable. Results-Driven.
-                </Box>
+                <Stack direction="row" spacing={1} sx={{ justifyContent: { xs: 'center', md: 'flex-start' }, mb: 3 }}>
+                  <Chip
+                    icon={<WhatshotIcon style={{ color: '#F77F00' }} />}
+                    label="Fast & Reliable Web Development Agency"
+                    sx={{
+                      bgcolor: 'rgba(0, 180, 216, 0.1)',
+                      border: '1px solid rgba(0, 180, 216, 0.35)',
+                      color: 'secondary.main',
+                      fontWeight: 600,
+                      backdropFilter: 'blur(6px)',
+                    }}
+                  />
+                </Stack>
 
                 <Typography
                   component="h1"
                   sx={{
                     fontWeight: 800,
                     letterSpacing: '-0.03em',
-                    lineHeight: 1.1,
+                    lineHeight: 1.15,
                     mb: 2.5,
-                    fontSize: { xs: '2.5rem', sm: '3.2rem', md: '3.8rem' },
+                    fontSize: { xs: '2.4rem', sm: '3.1rem', md: '3.7rem' },
                   }}
                 >
-                  Web Solutions That{' '}
+                  High-Performing Websites &amp; Apps That{' '}
                   <Box
                     component="span"
                     sx={{
@@ -328,34 +322,34 @@ export default function Home() {
                       WebkitTextFillColor: 'transparent',
                     }}
                   >
-                    Grow Your Business
+                    Scale Your Business
                   </Box>
                 </Typography>
 
                 <Typography
                   sx={{
                     color: 'warning.main',
-                    fontWeight: 600,
+                    fontWeight: 700,
                     mb: 2.5,
-                    letterSpacing: '0.12em',
+                    letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    fontSize: { xs: '0.85rem', md: '1rem' },
+                    fontSize: { xs: '0.85rem', md: '0.95rem' },
                   }}
                 >
-                  Custom Websites &amp; Digital Experiences
+                  Lightning Fast • Mobile Friendly • Google Search Ready
                 </Typography>
 
                 <Typography
                   sx={{
-                    mb: 5,
+                    mb: 4,
                     color: 'grey.300',
-                    maxWidth: 560,
+                    maxWidth: 580,
                     mx: { xs: 'auto', md: 0 },
                     fontSize: { xs: '1.05rem', md: '1.15rem' },
                     lineHeight: 1.75,
                   }}
                 >
-                  We craft modern, high-performing websites and online platforms designed to engage your customers, elevate your brand, and drive real results.
+                  We engineer modern web applications, high-converting business websites, and tailored digital portals designed to elevate your brand and drive actual search visibility.
                 </Typography>
 
                 <Stack
@@ -386,24 +380,27 @@ export default function Home() {
                     Start Your Project
                   </Button>
                   <Button
-                    variant="outlined"
+                    variant="contained"
                     size="large"
-                    component={Link}
-                    href="/portfolio"
+                    component="a"
+                    href="https://wa.me/919633134324?text=Hi%20Agnik%20Tech%20Solutions,%20I%20would%20like%20to%20discuss%20a%20website%20project."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    startIcon={<WhatsAppIcon />}
                     sx={{
-                      px: 4,
+                      px: 3.5,
                       py: 1.6,
-                      fontWeight: 600,
+                      fontWeight: 700,
                       fontSize: '1rem',
                       borderRadius: '999px',
                       textTransform: 'none',
+                      bgcolor: '#25D366',
                       color: 'white',
-                      borderColor: 'rgba(255,255,255,0.35)',
                       transition: 'all 0.3s ease',
-                      '&:hover': { borderColor: 'warning.main', bgcolor: 'rgba(247,127,0,0.08)' },
+                      '&:hover': { bgcolor: '#1DA851', transform: 'translateY(-3px)' },
                     }}
                   >
-                    View Our Work
+                    WhatsApp Us
                   </Button>
                 </Stack>
               </Box>
@@ -430,9 +427,9 @@ export default function Home() {
       {/* --- SERVICES SECTION --- */}
       <Container maxWidth="lg" sx={{ py: { xs: 10, md: 14 } }}>
         <SectionHeader
-          eyebrow="What We Do"
-          title="Services Built to Scale Your Business"
-          subtitle="From a sharp marketing site to a complex enterprise platform, we cover the full journey."
+          eyebrow="Our Web Development Services"
+          title="Full-Stack Solutions Tailored for Business Growth"
+          subtitle="From responsive business landing pages to full-scale enterprise software and custom web portals."
         />
         <Grid container spacing={3}>
           {SERVICES.map((s) => (
@@ -448,7 +445,7 @@ export default function Home() {
             endIcon={<ArrowForwardIcon />}
             sx={{ fontWeight: 700, textTransform: 'none', fontSize: '1rem', color: 'text.primary' }}
           >
-            Explore all services
+            Explore all services &amp; pricing
           </Button>
         </Box>
       </Container>
@@ -470,8 +467,8 @@ export default function Home() {
           <SectionHeader
             light
             eyebrow="How We Work"
-            title="A Simple Process, Exceptional Results"
-            subtitle="No surprises. Just a clear path from your idea to a product that performs."
+            title="A Streamlined Development Process"
+            subtitle="Transparent communication, predictable timelines, and clean execution from prototype to deployment."
           />
           <Grid container spacing={3}>
             {STEPS.map((step) => (
@@ -483,22 +480,22 @@ export default function Home() {
         </Container>
       </Box>
 
-      {/* --- ABOUT / TECH EXPERTISE SECTION (SEO Word Count Booster) --- */}
+      {/* --- ABOUT / TECH EXPERTISE SECTION (SEO Keyword Optimization) --- */}
       <Box sx={{ bgcolor: 'background.paper', py: { xs: 8, md: 12 }, borderTop: '1px solid', borderColor: 'divider' }}>
         <Container maxWidth="lg">
           <Grid container spacing={6} sx={{ alignItems: 'center' }}>
             <Grid size={{ xs: 12, md: 6 }}>
               <Typography variant="subtitle2" sx={{ color: 'warning.main', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 3, mb: 1.5 }}>
-                Full-Stack Excellence
+                Full-Stack Expertise in Kerala &amp; Beyond
               </Typography>
               <Typography variant="h3" component="h2" sx={{ fontWeight: 800, mb: 3, letterSpacing: '-0.02em', fontSize: { xs: '1.8rem', md: '2.3rem' } }}>
-                Engineering Scalable Digital Solutions for Modern Businesses
+                Engineering Modern Digital Experiences for Global &amp; Local Clients
               </Typography>
               <Typography sx={{ color: 'text.secondary', lineHeight: 1.8, mb: 2, fontSize: '1.05rem' }}>
-                At Agnik Tech Solutions, we specialize in building custom full-stack web applications designed to perform under pressure. Utilizing modern frameworks like Next.js, React, Node.js, and robust cloud environments, we help startups and enterprises streamline operations, optimize core conversion funnels, and scale effortlessly.
+                At <strong>Agnik Tech Solutions</strong>, based out of Alappuzha, Kerala, we specialize in building fast, secure, and SEO-friendly web applications for startups, tourism providers, alumni networks, and international enterprises.
               </Typography>
               <Typography sx={{ color: 'text.secondary', lineHeight: 1.8, fontSize: '1.05rem' }}>
-                Whether you need a high-performance e-commerce platform, a secure API architecture, or an interactive client dashboard, our senior engineering team ensures clean code, bulletproof security, and lightning-fast page speeds from day one.
+                Whether you need a custom houseboat booking platform, an administrative portal, or an international business landing page, our senior engineering team guarantees bulletproof code, responsive Material UI design, and Vercel CDN speed.
               </Typography>
             </Grid>
             <Grid size={{ xs: 12, md: 6 }}>
@@ -512,13 +509,13 @@ export default function Home() {
                 }}
               >
                 <Typography variant="h5" sx={{ fontWeight: 700, mb: 3, color: 'secondary.main' }}>
-                  Our Core Technologies
+                  Our Modern Tech Stack
                 </Typography>
                 <Box component="ul" sx={{ m: 0, pl: 2, display: 'flex', flexDirection: 'column', gap: 1.5, color: 'grey.300', fontSize: '1.05rem' }}>
-                  <li><strong>Frontend:</strong> Next.js App Router, React, TypeScript, Material-UI (MUI), Tailwind CSS</li>
-                  <li><strong>Backend & APIs:</strong> Node.js, Express, NestJS, RESTful & GraphQL architecture</li>
-                  <li><strong>Databases & Caching:</strong> MongoDB, PostgreSQL, Redis performance layers</li>
-                  <li><strong>Cloud & DevOps:</strong> AWS, Docker containerization, CI/CD automated deployment pipelines, Vercel</li>
+                  <li><strong>Frontend Architecture:</strong> Next.js App Router, React, TypeScript, Material-UI (MUI)</li>
+                  <li><strong>Backend &amp; Database:</strong> Node.js, Express, MongoDB, Server Actions</li>
+                  <li><strong>SEO &amp; Indexing:</strong> Google Search Console, Schema Markup, Meta Tag Optimization</li>
+                  <li><strong>Cloud Infrastructure:</strong> Vercel CDN, Docker, Automated CI/CD Pipelines, Custom DNS</li>
                 </Box>
               </Box>
             </Grid>
@@ -529,8 +526,8 @@ export default function Home() {
       {/* --- WHY CHOOSE US SECTION --- */}
       <Container maxWidth="lg" sx={{ py: { xs: 10, md: 14 } }}>
         <SectionHeader
-          eyebrow="Why Choose Us"
-          title="Engineering You Can Trust"
+          eyebrow="Why Work With Us"
+          title="Direct Engineering Without Agency Markup"
         />
         <Grid container spacing={3} sx={{ maxWidth: 900, mx: 'auto' }}>
           {REASONS.map((r) => (
@@ -588,33 +585,35 @@ export default function Home() {
               component="h2"
               sx={{ fontWeight: 800, mb: 2, letterSpacing: '-0.02em', fontSize: { xs: '1.9rem', md: '2.6rem' } }}
             >
-              Ready to Build Something Extraordinary?
+              Ready to Build Your Website or App?
             </Typography>
-            <Typography sx={{ color: 'grey.300', maxWidth: 560, mx: 'auto', mb: 4.5, fontSize: '1.1rem', lineHeight: 1.7 }}>
-              Tell us about your idea. We will help you shape it into fast, secure software that people love to use.
+            <Typography sx={{ color: 'grey.300', maxWidth: 580, mx: 'auto', mb: 4.5, fontSize: '1.1rem', lineHeight: 1.7 }}>
+              Get in touch today for a free consultation or quick quote for your business website, web application, or SEO audit.
             </Typography>
-            <Button
-              variant="contained"
-              color="warning"
-              size="large"
-              component={Link}
-              href="/contact"
-              endIcon={<ArrowForwardIcon />}
-              sx={{
-                px: 5,
-                py: 1.6,
-                fontWeight: 700,
-                fontSize: '1rem',
-                borderRadius: '999px',
-                textTransform: 'none',
-                color: 'white',
-                boxShadow: '0 12px 30px rgba(247, 127, 0, 0.45)',
-                transition: 'all 0.3s ease',
-                '&:hover': { bgcolor: '#d96c00', transform: 'translateY(-3px)' },
-              }}
-            >
-              Let&apos;s Talk
-            </Button>
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ justifyContent: 'center' }}>
+              <Button
+                variant="contained"
+                color="warning"
+                size="large"
+                component={Link}
+                href="/contact"
+                endIcon={<ArrowForwardIcon />}
+                sx={{
+                  px: 5,
+                  py: 1.6,
+                  fontWeight: 700,
+                  fontSize: '1rem',
+                  borderRadius: '999px',
+                  textTransform: 'none',
+                  color: 'white',
+                  boxShadow: '0 12px 30px rgba(247, 127, 0, 0.45)',
+                  transition: 'all 0.3s ease',
+                  '&:hover': { bgcolor: '#d96c00', transform: 'translateY(-3px)' },
+                }}
+              >
+                Get a Free Quote
+              </Button>
+            </Stack>
           </Box>
         </Box>
       </Container>

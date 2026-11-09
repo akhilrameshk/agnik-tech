@@ -28,8 +28,6 @@ import BugReportOutlinedIcon from '@mui/icons-material/BugReportOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import ShieldOutlinedIcon from '@mui/icons-material/ShieldOutlined';
 
-/* ---------- SEO Metadata (Note: For Next.js App Router, metadata exports must be in a Server Component. If this file remains 'use client', you can split it or place metadata in a layout/parent server file. Below is the standard metadata configuration object) ---------- */
-
 const fadeUp = keyframes`
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
@@ -43,105 +41,105 @@ const pulseGlow = keyframes`
 const services = [
   {
     no: '01',
-    title: 'Web Application Development',
-    desc: 'Modern, responsive web apps that load fast, rank well and feel great on every device. We build with React, Next.js and Angular, using server-side rendering where it matters.',
+    title: 'Custom Web Application Development',
+    desc: 'Modern, high-speed web apps that load instantly, rank high on Google search, and feel smooth on every device. Built with robust front-end and server-side optimization.',
     points: [
-      'Next.js & React applications with SEO built in',
-      'Responsive, accessible, pixel-perfect interfaces',
-      'Admin panels, customer portals and dashboards',
+      'Next.js & React applications with built-in SEO architecture',
+      'Fully responsive, mobile-friendly pixel-perfect interfaces',
+      'Custom admin panels, business portals, and live dashboards',
     ],
-    tags: ['Next.js', 'React', 'Angular', 'TypeScript'],
+    tags: ['Next.js', 'React', 'Mobile Responsive', 'SEO Ready'],
     icon: <WebIcon />,
   },
   {
     no: '02',
     title: 'Full-Stack & Backend Engineering',
-    desc: 'Reliable server-side systems that power your product: clean architecture, well-designed databases and business logic you can trust as you grow.',
+    desc: 'Reliable server-side systems that power your product: clean architecture, secure database management, and robust business logic designed to scale.',
     points: [
-      'Node.js, NestJS and Express back ends',
-      'PostgreSQL and MongoDB data modelling',
-      'Authentication, roles and permissions',
+      'Node.js, Express, and modern backend architectures',
+      'PostgreSQL and MongoDB secure data modeling',
+      'User authentication, roles, and granular permissions',
     ],
-    tags: ['Node.js', 'NestJS', 'PostgreSQL', 'MongoDB'],
+    tags: ['Node.js', 'Databases', 'Security', 'APIs'],
     icon: <CodeIcon />,
   },
   {
     no: '03',
     title: 'APIs & System Integrations',
-    desc: 'Secure, documented APIs and integrations that connect your software with payment gateways, third-party services and your existing tools.',
+    desc: 'Secure, well-documented APIs and system integrations that connect your software smoothly with payment gateways and third-party tools.',
     points: [
-      'REST API design and versioning',
-      'Microservice and event-driven architecture',
-      'Third-party and payment integrations',
+      'RESTful API design and reliable versioning',
+      'Scalable microservice and event-driven architecture',
+      'Payment gateway and third-party tool integrations',
     ],
-    tags: ['REST', 'Microservices', 'Webhooks', 'OAuth'],
+    tags: ['REST APIs', 'Integrations', 'Webhooks', 'OAuth'],
     icon: <HubOutlinedIcon />,
   },
   {
     no: '04',
-    title: 'Cloud & DevOps',
-    desc: 'Automated, repeatable deployments on the cloud so you can release confidently and scale when traffic grows, without late-night firefighting.',
+    title: 'Cloud & DevOps Deployment',
+    desc: 'Automated deployments on Vercel CDN and AWS so you can release updates with confidence and scale effortlessly when traffic grows.',
     points: [
-      'AWS setup and infrastructure management',
-      'Docker containers and CI/CD pipelines',
-      'Monitoring, logging and backups',
+      'Vercel & AWS cloud setup and domain configuration',
+      'Docker containerization and automated CI/CD pipelines',
+      'Real-time monitoring, uptime tracking, and automated backups',
     ],
-    tags: ['AWS', 'Docker', 'CI/CD', 'Monitoring'],
+    tags: ['Vercel CDN', 'AWS', 'Docker', 'CI/CD'],
     icon: <CloudQueueIcon />,
   },
   {
     no: '05',
-    title: 'Performance & Caching',
-    desc: 'Speed is a feature. We audit and optimize your application so pages load quickly and servers stay calm under pressure.',
+    title: 'Performance & Speed Optimization',
+    desc: 'Speed is critical for sales. We audit and optimize your application so pages load in milliseconds and servers remain stable under traffic spikes.',
     points: [
-      'Redis caching and query optimization',
-      'CDN, ISR and image optimization strategies',
-      'Core Web Vitals and load-time improvements',
+      'Caching layers and query optimization',
+      'CDN, Image compression, and asset delivery strategies',
+      'Core Web Vitals and lightning-fast load-time improvements',
     ],
-    tags: ['Redis', 'CDN', 'ISR', 'Web Vitals'],
+    tags: ['Fast Loading', 'Caching', 'Core Web Vitals', 'Performance'],
     icon: <SpeedIcon />,
   },
   {
     no: '06',
-    title: 'Maintenance & Support',
-    desc: 'Launch is just the beginning. We keep your software updated, secure and improving with ongoing support and new features.',
+    title: 'Ongoing Maintenance & Support',
+    desc: 'Launch is just the beginning. We keep your software updated, secure, and continuously improving with dedicated technical support.',
     points: [
-      'Bug fixes, updates and dependency upgrades',
-      'Security patches and regular health checks',
-      'Feature enhancements as your needs evolve',
+      'Regular bug fixes, software updates, and dependency upgrades',
+      'Proactive security patches and routine health checks',
+      'Continuous feature enhancements as your business evolves',
     ],
-    tags: ['Support', 'Upgrades', 'Security', 'Enhancements'],
+    tags: ['Support', 'Security Updates', 'Maintenance', 'Enhancements'],
     icon: <SupportAgentOutlinedIcon />,
   },
 ];
 
 const included = [
-  { title: 'Clean, Reviewed Code', desc: 'Readable, consistent and maintainable by any developer.', icon: <TaskAltOutlinedIcon /> },
-  { title: 'Testing & QA', desc: 'Bugs caught early, before your users find them.', icon: <BugReportOutlinedIcon /> },
-  { title: 'Documentation', desc: 'Clear docs so your team can run and extend the project.', icon: <MenuBookOutlinedIcon /> },
-  { title: 'Security by Default', desc: 'Safe authentication, validated inputs and hardened APIs.', icon: <ShieldOutlinedIcon /> },
+  { title: 'Clean, Reviewed Code', desc: 'Readable, scalable, and maintainable architecture.', icon: <TaskAltOutlinedIcon /> },
+  { title: 'Testing & QA', desc: 'Thorough testing to catch issues before users do.', icon: <BugReportOutlinedIcon /> },
+  { title: 'Full Documentation', desc: 'Clear guidelines so your team can manage the system.', icon: <MenuBookOutlinedIcon /> },
+  { title: 'Security by Default', desc: 'Hardened inputs, secure auth, and safe API endpoints.', icon: <ShieldOutlinedIcon /> },
 ];
 
 const faqs = [
   {
-    q: 'How do we get started?',
-    a: 'Contact us with a short description of your idea or problem. We will set up a discovery call, ask the right questions, and follow with a clear proposal covering scope, approach and timeline.',
+    q: 'How do we get started with a project?',
+    a: 'Contact us with your project idea or requirements. We will set up a brief consultation, understand your business goals, and provide a transparent proposal covering scope, timeline, and estimates.',
   },
   {
-    q: 'Which technologies do you work with?',
-    a: 'Our main stack is React, Next.js, Angular, Node.js, NestJS and Express, with PostgreSQL, MongoDB and Redis for data, and AWS, Docker and CI/CD for infrastructure. We choose the tools that best fit your project, not the other way round.',
+    q: 'What technologies do you use?',
+    a: 'We specialize in Next.js, React, Node.js, TypeScript, and Material-UI for front-end/back-end development, paired with Vercel and AWS for cloud infrastructure. We choose the right tools to guarantee high speed and SEO visibility.',
   },
   {
-    q: 'Can you work on an existing project?',
-    a: 'Yes. We can review your current codebase, fix issues, improve performance and security, add new features or gradually modernize the system without disrupting your business.',
+    q: 'Can you improve or update an existing website?',
+    a: 'Yes! We can audit your current codebase, fix performance bottlenecks, upgrade security, improve Google SEO rankings, or add brand-new features.',
   },
   {
-    q: 'Will I own the code?',
-    a: 'Yes. You receive the complete source code and documentation for your project, so you are never locked in.',
+    q: 'Will I have full ownership of the source code?',
+    a: 'Yes, absolutely. You retain 100% ownership of your source code and documentation upon project completion.',
   },
   {
-    q: 'Do you provide support after launch?',
-    a: 'Yes. We offer ongoing maintenance and support, including updates, monitoring, security patches and new features, based on what your product needs.',
+    q: 'Do you offer support after the website goes live?',
+    a: 'Yes, we provide ongoing maintenance, security updates, and technical support plans tailored to your business requirements.',
   },
 ];
 
@@ -188,9 +186,8 @@ function SectionHeading({
 export default function ServicesPage() {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'background.default', color: 'text.primary' }}>
-      {/* ==========================================
-          PAGE HERO
-          ========================================== */}
+      
+      {/* --- HERO SECTION --- */}
       <Box
         component="section"
         sx={{
@@ -257,7 +254,7 @@ export default function ServicesPage() {
             }}
           >
             <WhatshotIcon fontSize="small" sx={{ color: 'warning.main' }} />
-            Our Services
+            Our Web Development Services
           </Box>
 
           <Typography
@@ -285,8 +282,7 @@ export default function ServicesPage() {
           </Typography>
 
           <Typography sx={{ color: 'grey.200', maxWidth: 640, mx: 'auto', mb: 5, fontSize: '1.15rem', lineHeight: 1.75 }}>
-            Web development, backend systems, cloud and ongoing support, all under one roof, so you work with one
-            team from the first sketch to long-term growth.
+            High-performance web applications, robust backend systems, cloud deployment, and ongoing support, all managed under one expert team.
           </Typography>
 
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ justifyContent: 'center' }}>
@@ -311,36 +307,16 @@ export default function ServicesPage() {
             >
               Get a Free Quote
             </Button>
-            <Button
-              variant="outlined"
-              size="large"
-              component={Link}
-              href="/solutions"
-              sx={{
-                px: 4,
-                py: 1.6,
-                fontWeight: 600,
-                borderRadius: '999px',
-                textTransform: 'none',
-                color: 'common.white',
-                borderColor: 'rgba(255,255,255,0.4)',
-                '&:hover': { borderColor: 'warning.main', bgcolor: 'rgba(247,127,0,0.12)' },
-              }}
-            >
-              Explore Solutions
-            </Button>
           </Stack>
         </Container>
       </Box>
 
-      {/* ==========================================
-          SERVICE DETAILS (alternating rows)
-          ========================================== */}
+      {/* --- SERVICES LIST --- */}
       <Container maxWidth="lg" sx={{ py: { xs: 10, md: 14 } }}>
         <SectionHeading
           eyebrow="What We Offer"
-          title="Services That Cover the Whole Journey"
-          subtitle="Use one service or combine them. Each is delivered with the same focus on quality, speed and security."
+          title="Services Built to Scale Your Business"
+          subtitle="Designed for speed, security, and high search visibility."
         />
 
         <Stack spacing={{ xs: 8, md: 12 }}>
@@ -351,7 +327,6 @@ export default function ServicesPage() {
               spacing={{ xs: 4, md: 8 }}
               sx={{ alignItems: 'center' }}
             >
-              {/* Visual panel */}
               <Grid size={{ xs: 12, md: 5 }}>
                 <Box
                   sx={{
@@ -368,26 +343,6 @@ export default function ServicesPage() {
                     border: '1px solid rgba(255,255,255,0.08)',
                   }}
                 >
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      inset: 0,
-                      backgroundImage:
-                        'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
-                      backgroundSize: '32px 32px',
-                    }}
-                  />
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      bottom: -80,
-                      right: -60,
-                      width: 260,
-                      height: 260,
-                      borderRadius: '50%',
-                      background: 'radial-gradient(circle, rgba(247,127,0,0.35), transparent 65%)',
-                    }}
-                  />
                   <Typography
                     sx={{
                       position: 'absolute',
@@ -422,7 +377,6 @@ export default function ServicesPage() {
                 </Box>
               </Grid>
 
-              {/* Text */}
               <Grid size={{ xs: 12, md: 7 }}>
                 <Typography
                   variant="h4"
@@ -463,15 +417,13 @@ export default function ServicesPage() {
         </Stack>
       </Container>
 
-      {/* ==========================================
-          WHAT'S INCLUDED
-          ========================================== */}
-      <Box sx={{ bgcolor: 'background.paper', color: 'text.primary', py: { xs: 10, md: 14 }, position: 'relative', overflow: 'hidden', borderTop: '1px solid', borderBottom: '1px solid', borderColor: 'divider' }}>
-        <Container maxWidth="lg" sx={{ position: 'relative' }}>
+      {/* --- WHAT'S INCLUDED --- */}
+      <Box sx={{ bgcolor: 'background.paper', color: 'text.primary', py: { xs: 10, md: 14 }, borderTop: '1px solid', borderBottom: '1px solid', borderColor: 'divider' }}>
+        <Container maxWidth="lg">
           <SectionHeading
             eyebrow="Included in Every Project"
-            title="Quality You Do Not Have to Ask For"
-            subtitle="These standards come with every service we deliver."
+            title="Quality Standards Built In"
+            subtitle="Guaranteed engineering standards delivered with every solution."
           />
           <Grid container spacing={3}>
             {included.map((item) => (
@@ -502,11 +454,9 @@ export default function ServicesPage() {
         </Container>
       </Box>
 
-      {/* ==========================================
-          FAQ
-          ========================================== */}
+      {/* --- FAQ --- */}
       <Container maxWidth="md" sx={{ py: { xs: 10, md: 14 } }}>
-        <SectionHeading eyebrow="FAQ" title="Questions We Often Hear" />
+        <SectionHeading eyebrow="FAQ" title="Frequently Asked Questions" />
         <Stack spacing={2}>
           {faqs.map((f) => (
             <Accordion
@@ -534,9 +484,7 @@ export default function ServicesPage() {
         </Stack>
       </Container>
 
-      {/* ==========================================
-          FINAL CTA
-          ========================================== */}
+      {/* --- FINAL CTA --- */}
       <Container maxWidth="lg" sx={{ pb: { xs: 10, md: 14 } }}>
         <Box
           sx={{
@@ -552,27 +500,16 @@ export default function ServicesPage() {
             border: '1px solid rgba(255,255,255,0.1)',
           }}
         >
-          <Box
-            sx={{
-              position: 'absolute',
-              bottom: -140,
-              right: -80,
-              width: 420,
-              height: 420,
-              borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(247,127,0,0.35), transparent 65%)',
-            }}
-          />
           <Box sx={{ position: 'relative' }}>
             <Typography
               variant="h3"
               component="h2"
               sx={{ fontWeight: 800, mb: 2, letterSpacing: '-0.02em', fontSize: { xs: '1.9rem', md: '2.6rem' }, color: 'common.white' }}
             >
-              Let&apos;s Build Your Next Product
+              Ready to Start Your Next Project?
             </Typography>
             <Typography sx={{ color: 'grey.200', maxWidth: 560, mx: 'auto', mb: 4.5, fontSize: '1.1rem', lineHeight: 1.7 }}>
-              Share your requirements and we will get back with a clear plan, timeline and estimate.
+              Share your business requirements and we will provide a clear plan, timeline, and accurate estimate.
             </Typography>
             <Button
               variant="contained"

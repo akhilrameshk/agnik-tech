@@ -1,14 +1,12 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { pageMetadata } from '../seo';
 
-export const metadata: Metadata = pageMetadata({
-  title: 'Web Design & Development Services',
-  description:
-    'Website design, web app development, APIs, cloud and support from Agnik Tech Solutions. Mobile-friendly, SEO-ready and secure. Get a free quote.',
-  path: '/services',
-});
+export const metadata: Metadata = {
+  title: 'Web Design, Development & SEO Services | Agnik Tech Solutions',
+  description: 'Professional website design, custom web app development, cloud infrastructure, and SEO services by Agnik Tech Solutions in Alappuzha, Kerala. Get a free quote.',
+  keywords: ['Web Design Alappuzha', 'Next.js Development Kerala', 'Full Stack Agency', 'SEO Services Agnik Tech'],
+};
 
-export default function Layout({ children }: { children: ReactNode }) {
-  return children;
+export default function ServicesLayout({ children }: { children: ReactNode }) {
+  return <>{children}</>;
 }
