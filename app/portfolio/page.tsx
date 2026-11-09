@@ -47,7 +47,7 @@ const projects: Project[] = [
     tags: ['Tourism', 'Booking', 'Next.js'],
     icon: <DirectionsBoatOutlinedIcon />,
     gradient: 'linear-gradient(135deg, #0A192F 0%, #0B4F6C 60%, #00B4D8 150%)',
-    liveUrl: 'https://houseboat-oggkyn0b7-akhilrameshk.vercel.app/',
+    liveUrl: 'https://houseboat-hazel.vercel.app/',
   },
   {
     title: 'Daffodils Inn',
@@ -61,7 +61,7 @@ const projects: Project[] = [
     tags: ['Hospitality', 'Homestay', 'Business Site'],
     icon: <HomeOutlinedIcon />,
     gradient: 'linear-gradient(135deg, #0A192F 0%, #7A1F4B 60%, #F472B6 160%)',
-    liveUrl: 'https://daffodils-inn.vercel.app/',
+    liveUrl: 'https://daffodils-inn.onrender.com/',
   },
   {
     title: 'Elegant Events',
@@ -75,7 +75,7 @@ const projects: Project[] = [
     tags: ['Events', 'Management', 'Web App'],
     icon: <EventAvailableOutlinedIcon />,
     gradient: 'linear-gradient(135deg, #0A192F 0%, #3B2A80 60%, #818CF8 160%)',
-    liveUrl: 'https://event-management-git-main-akhilrameshk.vercel.app/',
+    liveUrl: 'https://event-management-lac-iota.vercel.app/',
   },
   {
     title: 'Personal Portfolio',
