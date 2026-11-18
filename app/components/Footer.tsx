@@ -4,6 +4,9 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import GoogleIcon from '@mui/icons-material/Google';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -11,6 +14,12 @@ const CONTACT = {
   email: 'info@agniktech.com',
   phone: '+91 9633134324',
   address: 'Opposite Alleppey Gym, Stadium Ward, Alappuzha, Kerala - 688001',
+};
+
+const SOCIAL_LINKS = {
+  facebook: 'https://www.facebook.com/share/19xxsiRTTd/',
+  instagram: 'https://www.instagram.com/invites/contact/?utm_content=4yaxrms&cplk=9a0lv258hs0n',
+  google: 'https://share.google/4ZIqn79bD4hD1j3Mt',
 };
 
 const companyLinks = [
@@ -83,7 +92,7 @@ export default function Footer() {
     >
       <Container maxWidth="lg">
         <Grid container spacing={{ xs: 5, md: 4 }}>
-          {/* Column 1: Brand & mission */}
+          {/* Column 1: Brand & mission & Colorful Social Icons */}
           <Grid size={{ xs: 12, md: 4 }}>
             <Box sx={{ position: 'relative', width: 260, height: 49, mb: 2.5 }}>
               <Image
@@ -93,10 +102,77 @@ export default function Footer() {
                 style={{ objectFit: 'contain', objectPosition: 'left' }}
               />
             </Box>
-            <Typography variant="body2" sx={{ color: 'grey.400', lineHeight: 1.8, mb: 3, maxWidth: 340 }}>
+            <Typography variant="body2" sx={{ color: 'grey.400', lineHeight: 1.8, mb: 2.5, maxWidth: 340 }}>
               We design and build world-class software, custom web applications and advanced tech
               solutions that are fast, scalable and secure.
             </Typography>
+
+            {/* Colorful Social Media Links */}
+            <Stack direction="row" spacing={1.5} sx={{ mb: 3 }}>
+              {/* Facebook */}
+              <MuiLink
+                href={SOCIAL_LINKS.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: '50%',
+                  bgcolor: 'rgba(24, 119, 242, 0.15)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#1877F2',
+                  transition: 'all 0.3s ease',
+                  '&:hover': { bgcolor: '#1877F2', color: 'white', transform: 'translateY(-3px)' },
+                }}
+              >
+                <FacebookIcon />
+              </MuiLink>
+
+              {/* Instagram */}
+              <MuiLink
+                href={SOCIAL_LINKS.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: '50%',
+                  bgcolor: 'rgba(228, 64, 95, 0.15)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#E4405F',
+                  transition: 'all 0.3s ease',
+                  '&:hover': { bgcolor: '#E4405F', color: 'white', transform: 'translateY(-3px)' },
+                }}
+              >
+                <InstagramIcon />
+              </MuiLink>
+
+              {/* Google */}
+              <MuiLink
+                href={SOCIAL_LINKS.google}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: '50%',
+                  bgcolor: 'rgba(66, 133, 244, 0.15)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#4285F4',
+                  transition: 'all 0.3s ease',
+                  '&:hover': { bgcolor: '#4285F4', color: 'white', transform: 'translateY(-3px)' },
+                }}
+              >
+                <GoogleIcon />
+              </MuiLink>
+            </Stack>
+
             <Button
               component={Link}
               href="/contact"

@@ -15,13 +15,15 @@ import {
 } from '@mui/material';
 import { keyframes } from '@mui/material/styles';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
-import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import RocketLaunchOutlinedIcon from '@mui/icons-material/RocketLaunchOutlined';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import GoogleIcon from '@mui/icons-material/Google';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
 
 const CONTACT = {
   email: 'info@agniktech.com',
@@ -30,13 +32,15 @@ const CONTACT = {
   address: 'Opposite Alleppey Gym, Stadium Ward, Alappuzha, Kerala - 688001',
 };
 
+const SOCIAL_LINKS = {
+  facebook: 'https://www.facebook.com/share/19xxsiRTTd/',
+  instagram: 'https://www.instagram.com/invites/contact/?utm_content=4yaxrms&cplk=9a0lv258hs0n',
+  google: 'https://share.google/4ZIqn79bD4hD1j3Mt',
+};
+
 const fadeUp = keyframes`
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
-`;
-const pulseGlow = keyframes`
-  0%, 100% { opacity: 0.55; transform: scale(1); }
-  50% { opacity: 0.9; transform: scale(1.08); }
 `;
 
 const serviceOptions = [
@@ -47,27 +51,6 @@ const serviceOptions = [
   'Performance & Caching',
   'Maintenance & Support',
   'Something else',
-];
-
-const steps = [
-  {
-    no: '01',
-    title: 'You Tell Us',
-    desc: 'Share a few details about your idea, goals or the problem you want solved.',
-    icon: <ForumOutlinedIcon />,
-  },
-  {
-    no: '02',
-    title: 'We Review',
-    desc: 'We study your request and get back to you with questions and initial thoughts.',
-    icon: <DescriptionOutlinedIcon />,
-  },
-  {
-    no: '03',
-    title: 'We Plan & Build',
-    desc: 'You receive a clear proposal with scope and timeline, and we get started.',
-    icon: <RocketLaunchOutlinedIcon />,
-  },
 ];
 
 type FormState = {
@@ -131,35 +114,13 @@ export default function ContactPage() {
     setForm(emptyForm);
   };
 
-  const infoCards = [
-    {
-      title: 'Our Location',
-      value: CONTACT.address,
-      href: 'https://maps.google.com/?q=Stadium+Ward+Alappuzha',
-      icon: <LocationOnOutlinedIcon />,
-      color: '#E63946',
-    },
-    {
-      title: 'Chat on WhatsApp',
-      value: CONTACT.phone,
-      href: `https://wa.me/${CONTACT.whatsapp}`,
-      icon: <WhatsAppIcon />,
-      color: '#25D366',
-    },
-    {
-      title: 'Email Us',
-      value: CONTACT.email,
-      href: `mailto:${CONTACT.email}`,
-      icon: <EmailOutlinedIcon />,
-      color: '#00B4D8',
-    },
-    {
-      title: 'Call Us',
-      value: CONTACT.phone,
-      href: `tel:${CONTACT.phone.replace(/\s/g, '')}`,
-      icon: <PhoneOutlinedIcon />,
-      color: '#F77F00',
-    },
+  const socialIcons = [
+    { title: 'WhatsApp', href: `https://wa.me/${CONTACT.whatsapp}`, icon: <WhatsAppIcon sx={{ fontSize: 32 }} />, color: '#25D366' },
+    { title: 'Facebook', href: SOCIAL_LINKS.facebook, icon: <FacebookIcon sx={{ fontSize: 32 }} />, color: '#1877F2' },
+    { title: 'Instagram', href: SOCIAL_LINKS.instagram, icon: <InstagramIcon sx={{ fontSize: 32 }} />, color: '#E4405F' },
+    { title: 'Google Business', href: SOCIAL_LINKS.google, icon: <GoogleIcon sx={{ fontSize: 32 }} />, color: '#EA4335' },
+    { title: 'Email Us', href: `mailto:${CONTACT.email}`, icon: <EmailOutlinedIcon sx={{ fontSize: 32 }} />, color: '#00B4D8' },
+    { title: 'Call Us', href: `tel:${CONTACT.phone.replace(/\s/g, '')}`, icon: <PhoneOutlinedIcon sx={{ fontSize: 32 }} />, color: '#F77F00' },
   ];
 
   return (
@@ -233,12 +194,12 @@ export default function ContactPage() {
           </Typography>
 
           <Typography sx={{ color: 'grey.300', maxWidth: 620, mx: 'auto', fontSize: '1.15rem', lineHeight: 1.75 }}>
-            Have a project in mind or want to visit us in Alappuzha? Get in touch and let&apos;s discuss how we can help.
+            Have a project in mind or want to connect with us? Get in touch and let&apos;s discuss how we can help.
           </Typography>
         </Container>
       </Box>
 
-      {/* FORM + INFO */}
+      {/* FORM + SOCIAL ICONS */}
       <Container maxWidth="lg" sx={{ mt: { xs: -10, md: -12 }, pb: { xs: 10, md: 14 }, position: 'relative', zIndex: 3 }}>
         <Grid container spacing={3}>
           {/* Form */}
@@ -367,57 +328,81 @@ export default function ContactPage() {
             </Card>
           </Grid>
 
-          {/* Info */}
+          {/* Social Icons Grid */}
           <Grid size={{ xs: 12, md: 5 }}>
-            <Stack spacing={3} sx={{ height: '100%' }}>
-              {infoCards.map((c) => (
-                <Card
-                  key={c.title}
-                  sx={{
-                    p: 3.5,
-                    borderRadius: '22px',
-                    bgcolor: 'background.paper',
-                    border: '1px solid',
-                    borderColor: 'divider',
-                    boxShadow: '0 16px 40px rgba(10, 25, 47, 0.08)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 2.5,
-                    transition: 'all 0.3s ease',
-                    '&:hover': { transform: 'translateY(-5px)', borderColor: c.color },
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: 62,
-                      height: 62,
-                      flexShrink: 0,
-                      borderRadius: '18px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: c.color,
-                      bgcolor: `${c.color}1A`,
-                      '& svg': { fontSize: 32 },
-                    }}
-                  >
-                    {c.icon}
-                  </Box>
-                  <Box sx={{ minWidth: 0 }}>
-                    <Typography sx={{ fontWeight: 800, color: 'primary.main' }}>{c.title}</Typography>
+            <Card
+              sx={{
+                p: { xs: 3, md: 4 },
+                borderRadius: '26px',
+                bgcolor: 'background.paper',
+                border: '1px solid',
+                borderColor: 'divider',
+                boxShadow: '0 28px 70px rgba(10, 25, 47, 0.16)',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+              }}
+            >
+              <Typography variant="h6" sx={{ fontWeight: 800, color: 'primary.main', mb: 1, textAlign: 'center' }}>
+                Connect With Us
+              </Typography>
+              <Typography variant="body2" sx={{ color: 'text.secondary', mb: 4, textAlign: 'center' }}>
+                Reach out to us instantly through our social channels or direct communication links.
+              </Typography>
+
+              <Grid container spacing={2.5}>
+                {socialIcons.map((s) => (
+                  <Grid size={{ xs: 6 }} key={s.title}>
                     <MuiLink
-                      href={c.href}
-                      target={c.title === 'Our Location' ? '_blank' : '_self'}
+                      href={s.href}
+                      target="_blank"
                       rel="noopener noreferrer"
-                      underline="hover"
-                      sx={{ color: 'text.secondary', wordBreak: 'break-word', '&:hover': { color: 'secondary.main' } }}
+                      underline="none"
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        p: 3,
+                        borderRadius: '20px',
+                        bgcolor: 'background.default',
+                        border: '1px solid',
+                        borderColor: 'divider',
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          transform: 'translateY(-4px)',
+                          borderColor: s.color,
+                          bgcolor: `${s.color}0D`,
+                          '& .icon-box': { bgcolor: s.color, color: 'white' },
+                        },
+                      }}
                     >
-                      {c.value}
+                      <Box
+                        className="icon-box"
+                        sx={{
+                          width: 56,
+                          height: 56,
+                          borderRadius: '16px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: s.color,
+                          bgcolor: `${s.color}1A`,
+                          mb: 1.5,
+                          transition: 'all 0.3s ease',
+                        }}
+                      >
+                        {s.icon}
+                      </Box>
+                      <Typography sx={{ fontWeight: 700, color: 'text.primary', fontSize: '0.95rem', textAlign: 'center' }}>
+                        {s.title}
+                      </Typography>
                     </MuiLink>
-                  </Box>
-                </Card>
-              ))}
-            </Stack>
+                  </Grid>
+                ))}
+              </Grid>
+            </Card>
           </Grid>
         </Grid>
       </Container>
