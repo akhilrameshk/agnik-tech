@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import Script from 'next/script';
 import { Poppins } from 'next/font/google';
 import { Box, CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
@@ -8,6 +9,7 @@ import theme from './theme';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import FloatingMenu from './components/FloatingMenu';
+import GoogleAnalytics from './components/GoogleAnalytics';
 import { rootMetadata, rootViewport, organizationJsonLd } from './seo';
 
 /* SEO: title, description, share previews, robots, canonical (see app/seo.ts) */
@@ -21,6 +23,8 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
+const adSenseClientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     // suppressHydrationWarning is needed because the theme script sets the light/dark class before React loads
@@ -29,25 +33,39 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* Applies the saved light/dark choice before first paint (no flash) */}
         <InitColorSchemeScript attribute="class" defaultMode="light" />
 
+        {/* Google Analytics (GA4) */}
+        <GoogleAnalytics />
+
+        {/* Google AdSense verification & ad loader */}
+        {adSenseClientId && (
+          <Script
+            id="google-adsense-script"
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adSenseClientId}`}
+            crossOrigin="anonymous"
+            strategy="afterInteractive"
+          />
+        )}
+
         {/* Structured data so Google understands the business */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
 
-           <ThemeProvider theme={theme} defaultMode="light">
-            <CssBaseline />
-            <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-              <Header />
-              <Box component="main" sx={{ flexGrow: 1 }}>
-                {children}
-              </Box>
-              <Footer />
+        <ThemeProvider theme={theme} defaultMode="light">
+          <CssBaseline />
+          <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+            <Header />
+            <Box component="main" sx={{ flexGrow: 1 }}>
+              {children}
             </Box>
+            <Footer />
+          </Box>
 
-            {/* Floating menu: theme toggle, WhatsApp, contact, scroll up/down */}
-            <FloatingMenu />
-          </ThemeProvider>
+          {/* Floating menu: theme toggle, WhatsApp, contact, scroll up/down */}
+          <FloatingMenu />
+        </ThemeProvider>
       </body>
     </html>
   );

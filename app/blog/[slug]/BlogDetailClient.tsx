@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   Alert,
@@ -17,6 +17,12 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ShareIcon from '@mui/icons-material/Share';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CheckIcon from '@mui/icons-material/Check';
+
+declare global {
+  interface Window {
+    adsbygoogle: Array<Record<string, unknown>>;
+  }
+}
 
 export interface PublicBlogBlock {
   type: 'paragraph' | 'heading' | 'code' | 'image';
@@ -35,6 +41,47 @@ export interface PublicBlogPost {
   coverImage: string;
   blocks: PublicBlogBlock[];
   createdAt: string;
+}
+
+export interface BlogAdSlots {
+  top?: string;
+  mid?: string;
+  bottom?: string;
+  footerAd?: string;
+}
+
+function AdSlotBanner({ adSlot }: { adSlot?: string }) {
+  const pushedRef = useRef(false);
+  const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
+
+  useEffect(() => {
+    if (!clientId || !adSlot || pushedRef.current) return;
+
+    try {
+      window.adsbygoogle = window.adsbygoogle || [];
+      window.adsbygoogle.push({});
+      pushedRef.current = true;
+    } catch {
+      // AdSense not ready or blocked
+    }
+  }, [clientId, adSlot]);
+
+  if (!clientId || !adSlot) {
+    return null;
+  }
+
+  return (
+    <Box sx={{ my: 4, textAlign: 'center', overflow: 'hidden' }}>
+      <ins
+        className="adsbygoogle"
+        style={{ display: 'block' }}
+        data-ad-client={clientId}
+        data-ad-slot={adSlot}
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
+    </Box>
+  );
 }
 
 function CodeSnippetBlock({
@@ -120,13 +167,22 @@ function CodeSnippetBlock({
   );
 }
 
-export default function BlogDetailClient({ post }: { post?: PublicBlogPost | null }) {
+export default function BlogDetailClient({
+  post,
+  adSlots,
+}: {
+  post?: PublicBlogPost | null;
+  adSlots?: BlogAdSlots;
+}) {
   const router = useRouter();
   const [copiedLink, setCopiedLink] = useState(false);
 
   if (!post) {
     return null;
   }
+
+  const blocks = Array.isArray(post.blocks) ? post.blocks : [];
+  const midIndex = blocks.length > 1 ? Math.floor(blocks.length / 2) - 1 : -1;
 
   const handleShare = async () => {
     const baseUrl =
@@ -222,67 +278,75 @@ export default function BlogDetailClient({ post }: { post?: PublicBlogPost | nul
           />
         )}
 
+        {/* Ad 1: Top */}
+        <AdSlotBanner adSlot={adSlots?.top} />
+
         <Divider sx={{ borderColor: 'rgba(255,255,255,0.08)', mb: 4 }} />
 
         <Box>
-          {Array.isArray(post.blocks) &&
-            post.blocks.map((block, idx) => {
-              if (block.type === 'heading') {
-                return (
-                  <Typography
-                    key={idx}
-                    variant="h5"
-                    sx={{ mt: 4, mb: 1.5, color: '#f8fafc', fontWeight: 700 }}
-                  >
-                    {block.content}
-                  </Typography>
-                );
-              }
+          {blocks.map((block, idx) => {
+            let blockElement: React.ReactNode;
 
-              if (block.type === 'code') {
-                return (
-                  <CodeSnippetBlock
-                    key={idx}
-                    code={block.content}
-                    language={block.language}
-                    caption={block.caption}
-                  />
-                );
-              }
-
-              if (block.type === 'image') {
-                return (
-                  <Box key={idx} sx={{ my: 3, textAlign: 'center' }}>
-                    <Box
-                      component="img"
-                      src={block.content}
-                      alt={block.caption || post.title}
-                      sx={{
-                        maxWidth: '100%',
-                        borderRadius: 2.5,
-                        border: '1px solid rgba(255,255,255,0.1)',
-                      }}
-                    />
-                    {block.caption && (
-                      <Typography variant="caption" sx={{ color: '#94a3b8', mt: 1, display: 'block' }}>
-                        {block.caption}
-                      </Typography>
-                    )}
-                  </Box>
-                );
-              }
-
-              return (
+            if (block.type === 'heading') {
+              blockElement = (
                 <Typography
-                  key={idx}
+                  variant="h5"
+                  sx={{ mt: 4, mb: 1.5, color: '#f8fafc', fontWeight: 700 }}
+                >
+                  {block.content}
+                </Typography>
+              );
+            } else if (block.type === 'code') {
+              blockElement = (
+                <CodeSnippetBlock
+                  code={block.content}
+                  language={block.language}
+                  caption={block.caption}
+                />
+              );
+            } else if (block.type === 'image') {
+              blockElement = (
+                <Box sx={{ my: 3, textAlign: 'center' }}>
+                  <Box
+                    component="img"
+                    src={block.content}
+                    alt={block.caption || post.title}
+                    sx={{
+                      maxWidth: '100%',
+                      borderRadius: 2.5,
+                      border: '1px solid rgba(255,255,255,0.1)',
+                    }}
+                  />
+                  {block.caption && (
+                    <Typography variant="caption" sx={{ color: '#94a3b8', mt: 1, display: 'block' }}>
+                      {block.caption}
+                    </Typography>
+                  )}
+                </Box>
+              );
+            } else {
+              blockElement = (
+                <Typography
                   variant="body1"
                   sx={{ color: '#e2e8f0', lineHeight: 1.8, mb: 2.5 }}
                 >
                   {block.content}
                 </Typography>
               );
-            })}
+            }
+
+            return (
+              <React.Fragment key={idx}>
+                {blockElement}
+                {/* Ad 2: Mid-article */}
+                {idx === midIndex && <AdSlotBanner adSlot={adSlots?.mid} />}
+              </React.Fragment>
+            );
+          })}
         </Box>
+
+        {/* Ad 3: Bottom of blocks */}
+        <AdSlotBanner adSlot={adSlots?.bottom} />
 
         {Array.isArray(post.tags) && post.tags.length > 0 && (
           <Stack
@@ -301,6 +365,9 @@ export default function BlogDetailClient({ post }: { post?: PublicBlogPost | nul
             ))}
           </Stack>
         )}
+
+        {/* Ad 4: After tags */}
+        <AdSlotBanner adSlot={adSlots?.footerAd} />
 
         <Snackbar
           open={copiedLink}
