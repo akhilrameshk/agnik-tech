@@ -50,7 +50,15 @@ export interface BlogAdSlots {
   footerAd?: string;
 }
 
-function AdSlotBanner({ adSlot }: { adSlot?: string }) {
+function AdSlotBanner({
+  adSlot,
+  label = 'Advertisement',
+  showSample = true,
+}: {
+  adSlot?: string;
+  label?: string;
+  showSample?: boolean;
+}) {
   const pushedRef = useRef(false);
   const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
 
@@ -66,20 +74,71 @@ function AdSlotBanner({ adSlot }: { adSlot?: string }) {
     }
   }, [clientId, adSlot]);
 
-  if (!clientId || !adSlot) {
+  if (clientId && adSlot) {
+    return (
+      <Box
+        sx={{
+          my: 2.5,
+          textAlign: 'center',
+          overflow: 'hidden',
+          maxHeight: 110,
+        }}
+      >
+        <ins
+          className="adsbygoogle"
+          style={{ display: 'block', maxHeight: '100px' }}
+          data-ad-client={clientId}
+          data-ad-slot={adSlot}
+          data-ad-format="horizontal"
+          data-full-width-responsive="true"
+        />
+      </Box>
+    );
+  }
+
+  if (!showSample) {
     return null;
   }
 
   return (
-    <Box sx={{ my: 4, textAlign: 'center', overflow: 'hidden' }}>
-      <ins
-        className="adsbygoogle"
-        style={{ display: 'block' }}
-        data-ad-client={clientId}
-        data-ad-slot={adSlot}
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      />
+    <Box
+      sx={{
+        my: 2.5,
+        px: 2,
+        py: 1.25,
+        borderRadius: 2,
+        border: '1px dashed rgba(249, 115, 22, 0.45)',
+        bgcolor: 'rgba(13, 24, 41, 0.75)',
+        display: 'flex',
+        flexDirection: { xs: 'column', sm: 'row' },
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: 1,
+      }}
+    >
+      <Typography
+        variant="caption"
+        sx={{
+          color: '#94a3b8',
+          letterSpacing: 0.8,
+          textTransform: 'uppercase',
+          fontSize: '0.68rem',
+          fontWeight: 600,
+        }}
+      >
+        {label} • Ad Space
+      </Typography>
+
+      <Typography
+        variant="body2"
+        sx={{
+          color: '#f97316',
+          fontWeight: 600,
+          fontSize: '0.85rem',
+        }}
+      >
+        Sponsored Banner Preview (Compact Horizontal)
+      </Typography>
     </Box>
   );
 }
@@ -279,7 +338,7 @@ export default function BlogDetailClient({
         )}
 
         {/* Ad 1: Top */}
-        <AdSlotBanner adSlot={adSlots?.top} />
+        <AdSlotBanner adSlot={adSlots?.top} label="Top Banner" />
 
         <Divider sx={{ borderColor: 'rgba(255,255,255,0.08)', mb: 4 }} />
 
@@ -339,14 +398,14 @@ export default function BlogDetailClient({
               <React.Fragment key={idx}>
                 {blockElement}
                 {/* Ad 2: Mid-article */}
-                {idx === midIndex && <AdSlotBanner adSlot={adSlots?.mid} />}
+                {idx === midIndex && <AdSlotBanner adSlot={adSlots?.mid} label="Mid-Article Ad" />}
               </React.Fragment>
             );
           })}
         </Box>
 
         {/* Ad 3: Bottom of blocks */}
-        <AdSlotBanner adSlot={adSlots?.bottom} />
+        <AdSlotBanner adSlot={adSlots?.bottom} label="Bottom Ad" />
 
         {Array.isArray(post.tags) && post.tags.length > 0 && (
           <Stack
@@ -367,7 +426,7 @@ export default function BlogDetailClient({
         )}
 
         {/* Ad 4: After tags */}
-        <AdSlotBanner adSlot={adSlots?.footerAd} />
+        <AdSlotBanner adSlot={adSlots?.footerAd} label="Footer Ad" />
 
         <Snackbar
           open={copiedLink}
